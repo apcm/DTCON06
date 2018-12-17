@@ -1,0 +1,16 @@
+
+package pruebas.json;
+
+import com.google.gson.Gson;
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+		final Gson pruebaGson = new Gson();
+
+	}
+
+}

@@ -1,0 +1,43 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.RefereeRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
+import domain.Referee;
+
+@Service
+@Transactional
+public class RefereeService {
+
+	//Repository
+	@Autowired
+	public RefereeRepository	refereeRepository;
+
+
+	//Services
+
+	//Constructor
+	public RefereeService() {
+		super();
+	}
+
+	//Simple CRUD
+	public Referee create() {
+
+		//Logged user must be an administrator
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		final Referee res;
+		return res;
+	}
+}

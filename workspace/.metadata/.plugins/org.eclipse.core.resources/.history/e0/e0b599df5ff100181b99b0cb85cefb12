@@ -1,0 +1,6 @@
+package repositories;
+
+@Repository
+public interface PhaseRepository extends JpaRepository<Phase,Integer>{
+
+}

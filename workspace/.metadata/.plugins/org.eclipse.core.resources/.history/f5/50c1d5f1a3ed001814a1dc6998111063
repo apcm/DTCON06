@@ -1,0 +1,34 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.ApplicationRepository;
+
+@Service
+@Transactional
+public class ApplicationService {
+
+	//Repository
+	@Autowired
+	public ApplicationRepository	applicationRepository;
+
+	//Services
+	@Autowired
+	public CustomerService			customerService;
+
+
+	//Constructor
+	public ApplicationService() {
+		super();
+	}
+
+	//Simple CRUD
+
+	//Complex methods
+	public findByCustomer(){
+		
+	}
+}

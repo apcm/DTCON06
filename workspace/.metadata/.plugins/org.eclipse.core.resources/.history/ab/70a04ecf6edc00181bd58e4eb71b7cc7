@@ -1,0 +1,18 @@
+
+package a.plus.json;
+
+import java.util.Date;
+
+import domain.Customisation;
+import domain.Tutorial;
+
+public class JsonUse {
+
+	public static void main(final String[] args) {
+		final Tutorial t = new Tutorial();
+		t.setLastUpdate(new Date(2018, 10, 28));
+		t.setPhotoURL("http://www.photourl.com");
+		t.set
+
+	}
+}

@@ -1,0 +1,33 @@
+# messages.properties
+#
+# Copyright (C) 2018 Universidad de Sevilla
+# 
+# The use of this project is hereby constrained to the conditions of the 
+# TDG Licence, a copy of which you may download from 
+# http://www.tdg-seville.info/License.html
+
+referee.edit.save				= Save
+referee.edit.cancel			= Cancel
+referee.edit.confirm.delete	= Are you sure about deleting this account?
+referee.edit.delete			= Delete
+referee.commit.error			= Cannot commit the operation
+
+referee.edit.contact			= Contact information
+referee.edit.userAccount		= Account information
+
+referee.edit.label.name		= Name
+referee.edit.label.surname		= Surname
+referee.edit.label.middleName 	= Middle name
+referee.edit.label.email		= Email
+referee.edit.label.address		= Address
+referee.edit.label.phoneNumber	= Phone number
+referee.edit.label.photoURL	= Photo URL 
+referee.edit.label.username	= Username
+referee.edit.label.password	= Password
+
+referee.edit.save				= Register
+referee.edit.save.save			= Save
+referee.edit.cancel			= Cancel
+
+handyoworker.show					= Personal data
+handyworker.back					= Back

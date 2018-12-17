@@ -1,0 +1,146 @@
+
+package service;
+
+import java.util.Arrays;
+import java.util.Date;
+
+import javax.transaction.Transactional;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
+
+import security.UserAccount;
+import utilities.AbstractTest;
+import domain.Box;
+import domain.Complaint;
+import domain.Customer;
+import domain.Endorsement;
+import domain.FixUpTask;
+import domain.Note;
+import domain.Referee;
+import domain.Report;
+import domain.SocialProfile;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {
+	"classpath:spring/datasource.xml", "classpath:spring/config/packages.xml"
+})
+@Transactional
+public class ComplaintServiceTest extends AbstractTest {
+
+	//Service----------------------------------------------
+	@Autowired
+	private ComplaintService	complaintService;
+	@Autowired
+	private CustomerService		customerService;
+	@Autowired
+	private RefereeService		refereeService;
+
+
+	//Test----------------------------------------------
+
+	@Test
+	public void testCreate() {
+		System.out.println("----testCreate()----");
+
+		try {
+			final Complaint complaint = this.complaintService.create();
+			final Complaint saved;
+			complaint.setTicker(utilities.TickerGenerator.generateTicker());
+			complaint.setMoment(new Date());
+			complaint.setDescription("This is a description.");
+			complaint.setAttachments(Arrays.asList("http://www.attachmentex.com"));
+
+			saved = this.complaintService.save(complaint);
+			//Falta save
+			Assert.isTrue(this.complaintService.findAll().contains(saved));
+			//Falta findAll
+			System.out.println("Éxito");
+		} catch (final Exception e) {
+			System.out.println("Fallo, " + e.getMessage());
+		}
+	}
+	@Test
+	public void testFindByCustomer() {
+		System.out.println("----testFindByCustomer()----");
+		try {
+			final Customer cust = this.customerService.create();
+			//Actor
+			cust.setName("Emilio");
+			cust.setEmail("emiliogonz@gmail.com");
+			cust.setPhoneNumber("645783987");
+			cust.setAddress("C/Molino");
+			cust.setBan(false);
+			cust.setMiddleName("Gonzalez");
+			cust.setSurname("Lopez");
+			cust.setPhotoURL("http://www.gonzalesphotos.com");
+			cust.setSocialProfiles(Arrays.asList(new SocialProfile()));
+			cust.setUserAccount(new UserAccount());
+			cust.setBoxes(Arrays.asList(new Box()));
+			//Endorser
+			cust.setEndorsements(Arrays.asList(new Endorsement()));
+			cust.setScore(20);
+			//Customer
+			cust.setFixUpTasks(Arrays.asList(new FixUpTask()));
+
+			final Complaint compla = this.complaintService.findByCustomer();
+			Assert.notNull(cust);
+			Assert.notNull(compla);
+
+			System.out.println("Éxito");
+
+		} catch (final Exception e) {
+			System.out.println("Fallo");
+		}
+	}
+	@Test
+	public void testFindNoReferee() {
+		System.out.println("----testFindNoReferee()----");
+		try {
+			final Referee ref = this.refereeService.create();
+			final Complaint complaint = this.complaintService.create();
+			complaint.setTicker(utilities.TickerGenerator.generateTicker());
+			complaint.setMoment(new Date());
+			complaint.setDescription("This is a description3.");
+			complaint.setAttachments(Arrays.asList("http://www.attachmente2x.com"));
+
+			final Complaint compla = this.complaintService.findNoReferee(ref.isEmpty());
+			//Falta isEmpty()
+			Assert.notNull(complaint);
+
+		} catch (final Exception e) {
+			System.out.println("Fallo, " + e.getMessage());
+		}
+	}
+
+	public void testFindByReferee() {
+		System.out.println("----testFindByReferee()----");
+		try {
+			final Referee ref = this.refereeService.create();
+			//Actor
+			ref.setName("Emilio");
+			ref.setEmail("emiliogonz@gmail.com");
+			ref.setPhoneNumber("645783987");
+			ref.setAddress("C/Molino");
+			ref.setBan(false);
+			ref.setMiddleName("Gonzalez");
+			ref.setSurname("Lopez");
+			ref.setPhotoURL("http://www.gonzalesphotos.com");
+			ref.setSocialProfiles(Arrays.asList(new SocialProfile()));
+			ref.setUserAccount(new UserAccount());
+			ref.setBoxes(Arrays.asList(new Box()));
+			//Referee
+			ref.setNotes(Arrays.asList(new Note()));
+			ref.setReports(Arrays.asList(new Report()));
+			final Complaint compla = this.complaintService.findByReferee(ref);
+			Assert.notNull(ref);
+			Assert.notNull(compla);
+		} catch (final Exception e) {
+			System.out.println("Fallo");
+		}
+	}
+}

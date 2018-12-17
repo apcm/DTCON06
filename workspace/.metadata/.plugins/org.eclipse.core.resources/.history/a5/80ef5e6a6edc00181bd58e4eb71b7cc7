@@ -1,0 +1,14 @@
+package a.plus.json;
+
+
+public class JsonUse {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

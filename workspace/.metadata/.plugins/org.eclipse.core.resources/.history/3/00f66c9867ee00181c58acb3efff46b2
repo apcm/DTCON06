@@ -1,0 +1,45 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.MessageRepository;
+import domain.Message;
+
+@Service
+@Transactional
+public class MessageService {
+
+	//Repository
+	@Autowired
+	public MessageRepository	messageRepository;
+
+
+	//Services
+
+	//Constructor
+	public MessageService() {
+		super();
+	}
+
+	//Simple CRUD 
+
+	public Message create() {
+		return new Message();
+	}
+
+	public Message save(final Message message) {
+		Assert.notNull(message);
+		Assert.isTrue(message.getId()!=0);
+		
+		
+		
+		final Message res;
+
+		return res;
+	}
+
+}

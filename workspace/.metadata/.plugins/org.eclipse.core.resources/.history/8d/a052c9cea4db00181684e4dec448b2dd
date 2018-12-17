@@ -1,0 +1,21 @@
+
+package pruebas.json;
+
+import com.google.gson.Gson;
+
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+		Prueba clase = new Prueba();
+		clase.setNombre("Fary");
+		clase.setNúmero(7);
+		clase.setPerro(true);
+		Gson pruebaGson = new Gson();
+		
+
+	}
+
+}
