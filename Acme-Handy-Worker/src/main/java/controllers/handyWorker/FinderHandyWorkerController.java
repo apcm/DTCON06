@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.LoginService;
 import services.FinderService;
+import services.FixUpTaskService;
 import controllers.AbstractController;
 import domain.Finder;
 import domain.FixUpTask;
@@ -26,6 +28,22 @@ public class FinderHandyWorkerController extends AbstractController {
 	@Autowired
 	private FinderService	finderService;
 
+	@Autowired
+	FixUpTaskService		fixUpTaskService;
+
+
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public ModelAndView show() {
+		final ModelAndView result;
+		final Finder finder = this.finderService.findByHWId(LoginService.getPrincipal().getId());
+		//LoginService.getPrincipal().getId();
+		final Collection<FixUpTask> fixUpTasks = finder.getFixUpTasks();
+		result = new ModelAndView("finder/show");
+		result.addObject("finder", finder);
+		result.addObject("fixUpTasks", fixUpTasks);
+		result.addObject("requestURI", "finder/handyworker/show.do");
+		return result;
+	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int finderId) {
@@ -40,7 +58,7 @@ public class FinderHandyWorkerController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView edit(@Valid final Finder finder, final BindingResult binding) {
+	public ModelAndView save(@Valid final Finder finder, final BindingResult binding) {
 		ModelAndView res;
 
 		if (binding.hasErrors())
@@ -66,28 +84,14 @@ public class FinderHandyWorkerController extends AbstractController {
 
 	protected ModelAndView createEditModelAndView(final Finder finder, final String messageCode) {
 		ModelAndView res;
-		final String category;
-		final String warranty;
 		final Collection<FixUpTask> fixUpTasks;
 
-		if (finder.getCategory() == null)
-			category = null;
-		else
-			category = finder.getCategory();
-
-		if (finder.getWarranty() == null)
-			warranty = null;
-		else
-			warranty = finder.getWarranty();
-
-		if (finder.getFixUpTasks().isEmpty())
+		if (finder.getFixUpTasks() == null)
 			fixUpTasks = null;
 		else
 			fixUpTasks = finder.getFixUpTasks();
 
 		res = new ModelAndView("finder/edit");
-		res.addObject("category", category);
-		res.addObject("warranty", warranty);
 		res.addObject("fixUpTasks", fixUpTasks);
 		res.addObject("message", messageCode);
 

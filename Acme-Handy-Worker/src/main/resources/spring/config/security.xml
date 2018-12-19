@@ -47,6 +47,10 @@
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" /> 
 		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" /> 
 
+		<security:intercept-url pattern="/finder/handyworker/**" access="hasRole('HANDYWORKER')" /> 		
+		<security:intercept-url pattern="/finder/handyworker/show.do" access="hasRole('HANDYWORKER')" /> 		
+		
+
 		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
@@ -62,6 +66,6 @@
 		<security:logout 
 			logout-success-url="/" 
 			invalidate-session="true" />
-	</security:http>
+		</security:http>
 
 </beans>

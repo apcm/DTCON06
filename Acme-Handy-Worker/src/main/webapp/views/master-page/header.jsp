@@ -58,7 +58,7 @@
 					<li><a href="handyworker/show.do"><spring:message code="master.page.handyworker.show" /></a></li>					
 					<li><a href="phase/list.do"><spring:message code="master.page.phases" /></a></li>					
 					<li><a href="application/list.do"><spring:message code="master.page.applications" /></a></li>					
-					<li><a href="finder/show.do"><spring:message code="master.page.finder" /></a></li>					
+					<li><a href="finder/handyworker/show.do"><spring:message code="master.page.finder" /></a></li>					
 					<li><a href="complaint/list.do"><spring:message code="master.page.complaints" /></a></li>					
 				</ul>
 			</li>
