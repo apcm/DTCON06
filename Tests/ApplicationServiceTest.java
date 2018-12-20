@@ -52,7 +52,7 @@ public class ApplicationServiceTest extends AbstractTest {
 		System.out.println(this.applicationService.findAll());
 		try {
 
-			//			app.setMoment(new Date());
+			//			app.setMoment(Calendar.getInstance().getTime());
 			//			app.setStatus("pending");
 			//			//			final Money mon = new Money();
 			//			//			mon.setAmount(8.0);
@@ -71,7 +71,12 @@ public class ApplicationServiceTest extends AbstractTest {
 			//			app.setFixUpTask(fut);
 			//			System.out.println("FUT de la App setted: " + app.getFixUpTask());
 			//			System.out.println(app);
-			//			saved = this.applicationService.save(app);
+			//			saved = this.applicationService.saveByHandyWorker(app);
+			//			System.out.println("App saved: " + saved);
+			//			System.out.println(this.applicationService.findAll());
+			//			Assert.isTrue(this.applicationService.findAll().contains(saved));
+			//			System.out.println("Save correcto");
+
 			//
 			//			final ArrayList<Application> hwApps = new ArrayList<>();
 			//			final HandyWorker hwForSave = this.handyWorkerService.findByPrincipal();
@@ -155,6 +160,26 @@ public class ApplicationServiceTest extends AbstractTest {
 			sbhw2.addAll(appsHw2);
 			final Application appHw2 = sbhw2.get(0);
 			System.out.println(appHw2.getComment());
+
+			System.out.println("------Test save-------");
+			final Application aaaa = this.applicationService.create();
+			final Collection<Application> bbb = this.applicationService.findByHandyWorker();
+			final ArrayList<Application> ccc = new ArrayList<>();
+			bbb.addAll(ccc);
+			final Application dddd = sbhw2.get(0);
+			aaaa.setComment(dddd.getComment());
+			aaaa.setCreditCard(dddd.getCreditCard());
+			System.out.println("CreditCard: " + dddd.getCreditCard().getBrandName());
+			aaaa.setFixUpTask(dddd.getFixUpTask());
+			aaaa.setMoment(dddd.getMoment());
+			aaaa.setOfferedPrice(dddd.getOfferedPrice());
+			System.out.println("OfferedPrice: " + dddd.getOfferedPrice().getAmount());
+			aaaa.setRejectedCause(dddd.getRejectedCause());
+			aaaa.setStatus(dddd.getStatus());
+
+			final Application savedAAAA = this.applicationService.save(aaaa);
+			System.out.println("App created saved: " + savedAAAA);
+			System.out.println("FindAll tras save: " + this.applicationService.findAll());
 
 			super.unauthenticate();
 
