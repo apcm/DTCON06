@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Acme-Certification (CleverCloud)/clevercloud/maven.json&apos; to &apos;war.json&apos;" description="Rename resource &apos;maven.json&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="clevercloud/maven.json" name="war.json" stamp="1539777341712" updateReferences="true"/>
+</session>

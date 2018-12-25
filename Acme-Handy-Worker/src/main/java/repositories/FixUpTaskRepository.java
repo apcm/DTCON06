@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import domain.FixUpTask;
@@ -26,11 +27,11 @@ public interface FixUpTaskRepository extends JpaRepository<FixUpTask, Integer> {
 	 */
 
 	//Queries 11.2
-	@Query("select f from FixUpTask f where f.description like '%?1%' or f.address like '%?1%' or f.ticker like '%?1%'")
-	Collection<FixUpTask> fixUpTaskFilterByKeyword(String keyword);
+	@Query("select f from FixUpTask f where f.description like concat('%',:keyword,'%')")
+	Collection<FixUpTask> fixUpTaskFilterByKeyword(@Param("keyword") String keyword);
 
-	@Query("select f from FixUpTask f where f.category.name like '%?1%'")
-	Collection<FixUpTask> fixUpTaskFilterByCategory(String category);
+	@Query("select f from FixUpTask f where f.category.name like concat('%',:category,'%')")
+	Collection<FixUpTask> fixUpTaskFilterByCategory(@Param("category") String category);
 
 	@Query("select f from FixUpTask f where f.maximumPrice.amount between ?1 and ?2")
 	Collection<FixUpTask> fixUpTaskFilterByRangeOfPrices(Double minPrice, Double maxPrice);

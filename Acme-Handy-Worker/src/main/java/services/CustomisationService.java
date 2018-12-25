@@ -93,7 +93,9 @@ public class CustomisationService {
 		final Authority a = new Authority();
 		final UserAccount user = LoginService.getPrincipal();
 		a.setAuthority(Authority.ADMIN);
-		Assert.isTrue(user.getAuthorities().contains(a));
+		final Authority b = new Authority();
+		a.setAuthority(Authority.HANDYWORKER);
+		Assert.isTrue(user.getAuthorities().contains(a) || user.getAuthorities().contains(b));
 
 		// res;
 		final Collection<Customisation> res = this.customisationRepository.findAll();

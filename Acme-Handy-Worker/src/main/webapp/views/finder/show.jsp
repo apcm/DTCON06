@@ -11,60 +11,81 @@
 
 
 <security:authorize access="hasRole('HANDYWORKER')">
-
-	<h1>
-		<spring:message code="finder.show" />
-	</h1>
-	
-	<p>
-		<spring:message code="finder.keyWord" />
-	</p>
+<jstl:set var="finder1" value="${keyWord }"/>
+<jstl:if test="${finder1!='expired12345678912345689123456789'}">
+	<h2>
+		<spring:message code="finder.keyWord" />:
+	</h2>
 	<jstl:out value="${finder.keyWord}"></jstl:out>
 	
-	<p>
-		<spring:message code="finder.category" />
-	</p>
-	<jstl:out value="${finder.category}"></jstl:out>
+	<h2>
+		<spring:message code="finder.category" />:
+	</h2>
+	<jstl:out value="${finder.category.name}"></jstl:out>
 	
-	<p>
-		<spring:message code="finder.minPrice" />
-	</p>
-	<jstl:out value="${finder.minPrice}"></jstl:out>
+	<h2>
+		<spring:message code="finder.minPrice" />:
+	</h2>
+	<jstl:out value="${finder.minPrice.amount}"></jstl:out>
+	<jstl:out value="${finder.minPrice.currency}"></jstl:out>
 	
-	<p>
-		<spring:message code="finder.maxPrice" />
-	</p>
-	<jstl:out value="${finder.maxPrice}"></jstl:out>
+	<h2>
+		<spring:message code="finder.maxPrice" />:
+	</h2>
+	<jstl:out value="${finder.maxPrice.amount}"></jstl:out>
+	<jstl:out value="${finder.maxPrice.currency}"></jstl:out>
 	
-	<p>
-		<spring:message code="finder.startDate" />
-	</p>
+	<h2>
+		<spring:message code="finder.startDate" />:
+	</h2>
 	<jstl:out value="${finder.startDate}"></jstl:out>
 	
-	<p>
-	<spring:message code="finder.endDate" />
-	</p>
+	<h2>
+	<spring:message code="finder.endDate" />:
+	</h2>
 	<jstl:out value="${finder.endDate}"></jstl:out>
 	
-	<p>
-	<spring:message code="finder.warranty" />
-	</p>
-	<jstl:out value="${finder.warranty}"></jstl:out>	
+	<h2>
+	<spring:message code="finder.warranty" />:
+	</h2>
+	<h3>
+	<spring:message code="finder.warranty.title" />:
+	</h3>
+	<jstl:out value="${finder.warranty.title}"></jstl:out>	
+	<h3>
+	<spring:message code="finder.warranty.terms" />:
+	</h3>
+	<jstl:out value="${finder.warranty.terms}"></jstl:out>
+	<h3>
+	<spring:message code="finder.warranty.applicableLaws" />:
+	</h3>
+	<jstl:out value="${finder.warranty.applicableLaws}"></jstl:out>
+	<h3>
+	<spring:message code="finder.warranty.finalMode" />:
+	</h3>
+	<jstl:set var="finalMode" value="${finder.warranty.finalMode}"/>
+	<jstl:if test="${finalMode ==true}">
+	<spring:message code="finder.warranty.finalMode.yes"/>
+	</jstl:if>
+	<jstl:if test="${finalMode ==false}">
+	<spring:message code="finder.warranty.finalMode.no"/>
+	</jstl:if>
 	
-	<p>
-	<spring:message code="finder.results" />
-	</p>
+	<h3>
+	<spring:message code="finder.results" />:
+	</h3>
 <!-- 	<jstl:forEach var="res" items="${finder.fixUpTasks}">
 		<jstl:out value="${res}"/>
 		<a href="finder/handyworker/edit.do?finderId=${finder.id}" ><spring:message code="finder.edit" /></a>
 	</jstl:forEach>  -->
-	
+
 	<display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="finder.fixUpTasks" requestURI="${requestURI}" id="row">
 	
 	<display:column property="ticker" titleKey="fixUpTask.ticker" />
 	<display:column property="description" titleKey="fixUpTask.description" />
-	<display:column property="maximumPrice" titleKey="fixUpTask.maximumPrice" />
+	<display:column property="maximumPrice.amount" titleKey="fixUpTask.maximumPrice" />
+	<display:column property="maximumPrice.currency" titleKey="fixUpTask.currency" />
 	<display:column property="startDate" titleKey="fixUpTask.startDate" />
 	<display:column property="endDate" titleKey="fixUpTask.endDate" />
 	
@@ -82,5 +103,15 @@
 	
 	<input type="button" name="back" onclick="javascript: window.location.replace('welcome/index.do')"
 		value="<spring:message code="finder.back" />" />
-	
+	</jstl:if>
 </security:authorize>
+
+<jstl:set var="finder1" value="${keyWord }"/>
+<jstl:if test="${finder1=='expired12345678912345689123456789'}">
+<h1><spring:message code="finder.gone"/>
+</h1>
+<p><spring:message code="finder.createNewOne"/>
+<br/>
+<a href="finder/handyworker/edit.do?finderId=${finder.id}">
+<spring:message code="finder.click"/></a></p>
+</jstl:if>

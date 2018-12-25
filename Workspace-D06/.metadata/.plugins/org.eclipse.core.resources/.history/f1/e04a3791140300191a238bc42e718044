@@ -1,0 +1,48 @@
+
+package Converters;
+
+import java.net.URLEncoder;
+
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import domain.FixUpTask;
+
+@Component
+@Transactional
+public class FixUpTaskToStringConverter implements Converter<FixUpTask, String> {
+
+	@Override
+	public String convert(final FixUpTask fixUpTask) {
+		String result;
+		StringBuilder builder;
+
+		if (fixUpTask == null)
+			result = null;
+		else
+			try {
+				builder = new StringBuilder();
+				builder.append(URLEncoder.encode(Integer.toString(fixUpTask.getId()), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getTicker(), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getMoment().toString(), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getDescription(), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getAddress(), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getMaximumPrice().toString(), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getStartDate().toString(), "UTF-8"));
+				builder.append("|");
+				builder.append(URLEncoder.encode(fixUpTask.getEndDate().toString(), "UTF-8"));
+				result = builder.toString();
+			} catch (final Throwable oops) {
+				throw new RuntimeException(oops);
+
+			}
+		return result;
+	}
+}

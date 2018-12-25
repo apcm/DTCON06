@@ -1,0 +1,14 @@
+127.0.0.1 - - [18/Dec/2018:12:45:54 +0100] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/ HTTP/1.1" 200 1987
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/scripts/jquery.js HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/scripts/jquery-ui.js HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/scripts/jmenu.js HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/styles/jmenu.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/styles/common.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/styles/displaytag.css HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:00 +0100] "GET /Acme-Handy-Worker/images/logo.png HTTP/1.1" 304 -
+127.0.0.1 - - [18/Dec/2018:12:47:22 +0100] "GET /Acme-Handy-Worker/security/login.do HTTP/1.1" 200 2297
+127.0.0.1 - - [18/Dec/2018:12:47:27 +0100] "POST /Acme-Handy-Worker/j_spring_security_check HTTP/1.1" 302 -
+127.0.0.1 - - [18/Dec/2018:12:47:28 +0100] "GET /Acme-Handy-Worker/ HTTP/1.1" 500 45438
+127.0.0.1 - - [18/Dec/2018:13:13:19 +0100] "POST /Acme-Handy-Worker/j_spring_security_check HTTP/1.1" 302 -
+127.0.0.1 - - [18/Dec/2018:13:13:20 +0100] "GET /Acme-Handy-Worker/ HTTP/1.1" 500 45438

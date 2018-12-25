@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="237" key="DIALOG_WIDTH"/>
+		<item value="281" key="DIALOG_Y_ORIGIN"/>
+		<item value="810" key="DIALOG_X_ORIGIN"/>
+		<item value="362" key="DIALOG_HEIGHT"/>
+		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="finder" key="selection"/>
+		<list key="findhistory">
+			<item value="finder"/>
+			<item value="moment"/>
+			<item value="warranty"/>
+			<item value="acme-shout.hidora.com"/>
+			<item value="acme-"/>
+			<item value="app-"/>
+			<item value="app"/>
+			<item value="http://http://"/>
+		</list>
+		<list key="replacehistory">
+			<item value="app-0ed10681-16d9-4f8c-a16e-712b3f324487.cleverapps.io"/>
+			<item value="http://"/>
+			<item value="http://app-0ed10681-16d9-4f8c-a16e-712b3f324487.cleverapps.io"/>
+			<item value="app-0ed10681-16d9-4f8c-a16e-712b3f324487"/>
+			<item value="acme-shout.hidora.com"/>
+			<item value="http://acme-shout.hidora.com"/>
+			<item value="this."/>
+			<item value="customer."/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="389" key="DIALOG_Y_ORIGIN"/>
+		<item value="609" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

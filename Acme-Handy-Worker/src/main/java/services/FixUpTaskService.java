@@ -170,10 +170,7 @@ public class FixUpTaskService {
 		Assert.isTrue(user.getAuthorities().contains(a));
 
 		final ArrayList<FixUpTask> res = new ArrayList<>();
-		System.out.println("antes de la query");
-		System.out.println("res: " + this.fixUpTaskRepository.fixUpTaskFilterByKeyword(keyword));
 		res.addAll(this.fixUpTaskRepository.fixUpTaskFilterByKeyword(keyword));
-		System.out.println("FUTs: " + res);
 		return res;
 
 	}
