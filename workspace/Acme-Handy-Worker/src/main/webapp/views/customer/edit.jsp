@@ -8,6 +8,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+aaa
 <security:authorize access="hasRole('CUSTOMER')">
 <form:form action="customer/customer/edit.do" modelAttribute="customer">
 	
@@ -18,6 +19,7 @@
 	<form:hidden path="socialProfiles" />
 	<form:hidden path="ban" />
 	<form:hidden path="fixUpTasks" />
+	<form:hidden path="score" />
  
  	
 	<fieldset>

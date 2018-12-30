@@ -61,30 +61,30 @@ public class CustomerService {
 		result = new Customer();
 
 		// Actor
-		final Box trash = new Box();
-		final Box out = new Box();
-		final Box spam = new Box();
-		final Box in = new Box();
-		trash.setName("trash");
-		in.setName("in");
-		out.setName("out");
-		spam.setName("spam");
-		out.setPredefined(true);
-		in.setPredefined(true);
-		spam.setPredefined(true);
-		trash.setPredefined(true);
+		//		final Box trash = new Box();
+		//		final Box out = new Box();
+		//		final Box spam = new Box();
+		//		final Box in = new Box();
+		//		trash.setName("trash");
+		//		in.setName("in");
+		//		out.setName("out");
+		//		spam.setName("spam");
+		//		out.setPredefined(true);
+		//		in.setPredefined(true);
+		//		spam.setPredefined(true);
+		//		trash.setPredefined(true);
 		final List<Box> predefined = new ArrayList<Box>();
-		predefined.add(in);
-		predefined.add(out);
-		predefined.add(spam);
-		predefined.add(trash);
+		//		predefined.add(in);
+		//		predefined.add(out);
+		//		predefined.add(spam);
+		//		predefined.add(trash);
 
 		final UserAccount newUser = new UserAccount();
 		final Authority f = new Authority();
 		f.setAuthority(Authority.CUSTOMER);
 		newUser.addAuthority(f);
 
-		result.setBoxes(new ArrayList<Box>(predefined));
+		result.setBoxes(predefined);
 		result.setSocialProfiles(new ArrayList<SocialProfile>());
 		result.setName("");
 		result.setEmail("");
@@ -92,6 +92,7 @@ public class CustomerService {
 		result.setSurname("");
 		result.setPhoneNumber("");
 		result.setPhotoURL("");
+		result.setUserAccount(newUser);
 
 		// Customer
 		result.setScore(0);
@@ -233,4 +234,7 @@ public class CustomerService {
 		return this.customerRepository.save(cus);
 	}
 
+	public Customer findOne(final int customerId) {
+		return this.customerRepository.findOne(customerId);
+	}
 }

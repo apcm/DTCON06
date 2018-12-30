@@ -3,6 +3,7 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -17,6 +18,7 @@ public class Warranty extends DomainEntity {
 	private boolean	finalMode;
 
 
+	@Column(unique = true)
 	@NotBlank
 	public String getTitle() {
 		return this.title;

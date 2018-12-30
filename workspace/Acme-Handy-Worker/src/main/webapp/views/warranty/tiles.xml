@@ -15,4 +15,7 @@
 		<put-attribute name="body" value="/views/warranty/edit.jsp" />
 	</definition>
 	
+	<definition name="warranty/dropdown" template="/views/warranty/dropdown.jsp">
+	</definition>	
+	
 </tiles-definitions>    

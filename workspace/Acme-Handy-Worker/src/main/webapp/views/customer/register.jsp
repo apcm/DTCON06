@@ -6,11 +6,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-   
-<security:authorize access="isAnonymous()"> 
-<form:form action="customer/edit.do" modelAttribute="customer">
-
+<form:form action="customer/register.do" modelAttribute="customer">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="socialProfiles" />
@@ -18,10 +14,9 @@
 	<form:hidden path="userAccount.authorities" />
 	<form:hidden path="ban" />	
 	
-	<form:hidden path="applications" />
-	<form:hidden path="plannedPhases" />
-	<form:hidden path="finders" />
-	<form:hidden path="curriculum" />
+	<form:hidden path="fixUpTasks" />
+	<form:hidden path="score" />
+	
 	
 	<fieldset>
 	<legend align="left"><spring:message code="customer.edit.contact" /></legend>
@@ -31,7 +26,7 @@
 		</form:label>
 		<form:input path="name"/>
 		<form:errors cssClass="error" path="name" />		
-		
+	
 		<br/>
 		<br/>
 	
@@ -75,7 +70,7 @@
 			<spring:message code="customer.edit.label.phoneNumber" />:
 		</form:label>
 		<form:input path="phoneNumber"/>
-		<form:errors cssClass="error" path="phone" />
+		<form:errors cssClass="error" path="phoneNumber" />
 		
 		<br/>
 		<br/>
@@ -94,7 +89,7 @@
 	<br/>
 	<br/>
 	<fieldset>
-		<legend align="left"><spring:message code="customer.edit.userAcount" /></legend>
+		<legend align="left"><spring:message code="customer.edit.useraccount" /></legend>
 		<form:label path="userAccount.username">
 			<spring:message code="customer.edit.label.username" />:
 		</form:label>
@@ -117,5 +112,3 @@
 			value="<spring:message code="customer.edit.cancel" />" />
 
 </form:form>
-</security:authorize>
-

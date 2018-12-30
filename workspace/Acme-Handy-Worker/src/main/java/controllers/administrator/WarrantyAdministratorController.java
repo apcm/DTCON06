@@ -1,5 +1,5 @@
 
-package controllers.controllers;
+package controllers.administrator;
 
 import java.util.Collection;
 

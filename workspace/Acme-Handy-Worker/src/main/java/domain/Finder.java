@@ -14,32 +14,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Finder extends DomainEntity {
 
 	private String	keyWord;
-	private String	category;
 	private Money	minPrice;
 	private Money	maxPrice;
 	private Date	startDate;
 	private Date	endDate;
+	private Date	moment;
 
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	public Date getMoment() {
+		return this.moment;
+	}
+	public void setMoment(final Date moment) {
+		this.moment = moment;
+	}
 	public String getKeyWord() {
 		return this.keyWord;
 	}
 	public void setKeyWord(final String keyWord) {
 		this.keyWord = keyWord;
 	}
-	public String getCategory() {
-		return this.category;
-	}
-	public void setCategory(final String category) {
-		this.category = category;
-	}
+
 	@AttributeOverrides({
 		@AttributeOverride(name = "amount", column = @Column(name = "minimumAmount")), @AttributeOverride(name = "currency", column = @Column(name = "minimumCurrency"))
 	})
@@ -59,16 +63,18 @@ public class Finder extends DomainEntity {
 	public void setMaxPrice(final Money maxPrice) {
 		this.maxPrice = maxPrice;
 	}
-	@NotNull
+
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getStartDate() {
 		return this.startDate;
 	}
 	public void setStartDate(final Date startDate) {
 		this.startDate = startDate;
 	}
-	@NotNull
+
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getEndDate() {
 		return this.endDate;
 	}
@@ -79,6 +85,7 @@ public class Finder extends DomainEntity {
 
 	//Relationships
 	private Collection<FixUpTask>	fixUpTasks;
+	private Category				category;
 	private Warranty				warranty;
 
 
@@ -89,10 +96,21 @@ public class Finder extends DomainEntity {
 	public void setFixUpTasks(final Collection<FixUpTask> fixUpTasks) {
 		this.fixUpTasks = fixUpTasks;
 	}
-	@ManyToOne(optional = true)
+
+	@ManyToOne(optional = false)
+	public Category getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(final Category category) {
+		this.category = category;
+	}
+
+	@ManyToOne(optional = false)
 	public Warranty getWarranty() {
 		return this.warranty;
 	}
+
 	public void setWarranty(final Warranty warranty) {
 		this.warranty = warranty;
 	}

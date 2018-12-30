@@ -35,6 +35,9 @@ public class HandyWorkerService {
 	@Autowired
 	public AdministratorService		administratorService;
 
+	@Autowired
+	public FinderService			finderService;
+
 
 	//Constructor
 	public HandyWorkerService() {
@@ -76,10 +79,10 @@ public class HandyWorkerService {
 		spam.setPredefined(true);
 		trash.setPredefined(true);
 		final List<Box> predefined = new ArrayList<Box>();
-		predefined.add(in);
-		predefined.add(out);
-		predefined.add(spam);
-		predefined.add(trash);
+		//		predefined.add(in);
+		//		predefined.add(out);
+		//		predefined.add(spam);
+		//		predefined.add(trash);
 
 		final UserAccount newUser = new UserAccount();
 		final Authority f = new Authority();
@@ -105,7 +108,8 @@ public class HandyWorkerService {
 		//TODO: Make name
 		result.setMake("");
 		result.setPlannedPhases(phases);
-		result.setFinder(new Finder());
+		final Finder find = this.finderService.create();
+		result.setFinder(find);
 		return result;
 	}
 	//9.2

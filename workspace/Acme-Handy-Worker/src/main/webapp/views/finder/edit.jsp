@@ -10,9 +10,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <security:authorize access="hasRole('HANDYWORKER')">
-	<h1>
-		<spring:message code="finder.edit.header" />
-	</h1>
 
 <form:form action="finder/handyworker/edit.do" modelAttribute="finder">
 
@@ -27,25 +24,45 @@
 	<form:errors cssClass="error" path="keyWord" />
 	<br />
 
+	<form:label path="warranty">
+		<spring:message code="finder.warranty" />:
+	</form:label>
+	<form:select id="warranties" path="warranty">
+	<form:options items="${warranties}" itemLabel="title" itemValue="id" />
+	<form:option value="0" label="----" />
+	</form:select>
+	<form:errors cssClass="error" path="warranty" />
+	<br />
+	
 	<form:label path="category">
 		<spring:message code="finder.category" />:
 	</form:label>
-	<form:input path="category" />
+	<form:select id="categories" path="category">
+	<form:options items="${categories}" itemLabel="name" itemValue="id" />
+	<form:option value="0" label="----" />
+	</form:select>
 	<form:errors cssClass="error" path="category" />
 	<br />
-
-	<form:label path="minPrice">
+		
+	<form:label path="minPrice.amount">
 		<spring:message code="finder.minPrice" />:
 	</form:label>
-	<form:input path="minPrice" />
-	<form:errors cssClass="error" path="minPrice" />
+	<form:input path="minPrice.amount" />
+	<form:errors cssClass="error" path="minPrice.amount" />
 	<br />
 
-	<form:label path="maxPrice">
+	<form:label path="minPrice.currency">
+		<spring:message code="finder.minPrice" />:
+	</form:label>
+	<form:input path="minPrice.currency" />
+	<form:errors cssClass="error" path="minPrice.currency" />
+	<br />
+
+	<form:label path="maxPrice.amount">
 		<spring:message code="finder.maxPrice" />:
 	</form:label>
-	<form:input path="maxPrice" />
-	<form:errors cssClass="error" path="maxPrice" />
+	<form:input path="maxPrice.amount" optional="true"/>
+	<form:errors cssClass="error" path="maxPrice.amount" />
 	<br />
 	
 	<form:label path="startDate">
@@ -54,7 +71,14 @@
 	<form:input path="startDate" />
 	<form:errors cssClass="error" path="startDate" />
 	<br />
-	
+
+	<form:label path="maxPrice.currency">
+		<spring:message code="finder.maxPrice" />:
+	</form:label>
+	<form:input path="maxPrice.currency" optional="true"/>
+	<form:errors cssClass="error" path="maxPrice.currency" />
+	<br />
+		
 	<form:label path="endDate">
 		<spring:message code="finder.endDate" />:
 	</form:label>

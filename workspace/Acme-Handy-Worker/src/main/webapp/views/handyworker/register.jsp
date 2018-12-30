@@ -6,10 +6,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-   
-<security:authorize access="isAnonymous()"> 
-<form:form action="handyworker/edit.do" modelAttribute="handyWorker">
+<form:form action="handyworker/register.do" modelAttribute="handyWorker">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="socialProfiles" />
@@ -17,7 +14,14 @@
 	<form:hidden path="userAccount.authorities" />
 	<form:hidden path="ban" />
 		
-	<form:hidden path="fixUpTasks" />
+	<form:hidden path="applications" />
+	<form:hidden path="plannedPhases" />
+	<!-- <form:hidden path="finder" /> -->
+	<form:hidden path="notes" />
+	<form:hidden path="curriculum" />
+	<form:hidden path="score" />
+	
+	
 	
 	<fieldset>
 	<legend align="left"><spring:message code="handyworker.edit.contact" /></legend>
@@ -79,7 +83,7 @@
 			<spring:message code="handyworker.edit.label.phoneNumber" />:
 		</form:label>
 		<form:input path="phoneNumber"/>
-		<form:errors cssClass="error" path="phone" />
+		<form:errors cssClass="error" path="phoneNumber" />
 		
 		<br/>
 		<br/>
@@ -98,7 +102,7 @@
 	<br/>
 	<br/>
 	<fieldset>
-		<legend align="left"><spring:message code="handyworker.edit.userAcount" /></legend>
+		<legend align="left"><spring:message code="handyworker.edit.userAccount" /></legend>
 		<form:label path="userAccount.username">
 			<spring:message code="handyworker.edit.label.username" />:
 		</form:label>
@@ -121,5 +125,5 @@
 			value="<spring:message code="handyworker.edit.cancel" />" />
 
 </form:form>
-</security:authorize>
+
 
