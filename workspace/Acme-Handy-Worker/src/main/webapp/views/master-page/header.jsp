@@ -32,13 +32,11 @@
 			</li>
 		</security:authorize>
 		
-		
-		
 		<security:authorize access="hasRole('CUSTOMER')">
 			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="customer/edit.do"><spring:message code="master.page.customer.edit" /></a></li>
+					<li><a href="customer/customer/edit.do"><spring:message code="master.page.customer.edit" /></a></li>
 					<li><a href="box/list.do"><spring:message code="master.page.boxes" /></a></li>					
 					<li><a href="customer/show.do"><spring:message code="master.page.customer.show" /></a></li>					
 					<li><a href="fixuptask/list.do"><spring:message code="master.page.fixuptasks" /></a></li>					
@@ -53,7 +51,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.handyworker" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="handyworker/edit.do"><spring:message code="master.page.handyworker.edit" /></a></li>
+					<li><a href="handyworker/handyworker/edit.do"><spring:message code="master.page.handyworker.edit" /></a></li>
 					<li><a href="box/list.do"><spring:message code="master.page.boxes" /></a></li>					
 					<li><a href="handyworker/show.do"><spring:message code="master.page.handyworker.show" /></a></li>					
 					<li><a href="phase/list.do"><spring:message code="master.page.phases" /></a></li>					
@@ -110,12 +108,7 @@
 		</security:authorize>
 
 		<security:authorize access="isAuthenticated()">
-			<li>
-				<a class="fNiv"> 
-			        
-				</a>
-					<li class="arrow"></li>
-				
+			<li><a class="fNiv"></a><li class="arrow"></li>
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
