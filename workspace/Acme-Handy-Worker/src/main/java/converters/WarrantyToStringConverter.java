@@ -18,7 +18,7 @@ public class WarrantyToStringConverter implements Converter<Warranty, String> {
 		if (warranty == null)
 			res = null;
 		else
-			res = String.valueOf(warranty);
+			res = String.valueOf(warranty.getId());
 
 		return res;
 	}

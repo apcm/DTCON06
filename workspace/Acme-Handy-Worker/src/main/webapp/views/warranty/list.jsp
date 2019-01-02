@@ -1,16 +1,17 @@
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="domain.Warranty"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="hasRole('ADMINISTRATOR')">
 
-	<h1>
-		<spring:message code="warranty.list" />
-	</h1>
+<security:authorize access="hasRole('ADMIN')">
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="warranties" requestURI="${requestURI}" id="row">
@@ -18,10 +19,6 @@
 	<!-- Action links -->
 	
 	<!-- Attributes -->
-	<!--  
-	<spring:message code="warranty.title" var="titleHeader" />
-	<display:column property="title" title="${titleHeader}" sortable="true" />
-	-->
 	
 	<display:column property="title" titleKey="warranty.title" sortable="true" />
 
@@ -32,17 +29,16 @@
 	<display:column property="applicableLaws" title="${lawsHeader}" sortable="false" />
 
 	<spring:message code="warranty.finalMode" var="finalModeHeader" />
-	<display:column property="finalmode" title="${finalModeHeader}"	sortable="false" />
-	
-	<jstl:if test="${warranty.finalmode == false}">	
-		<spring:message code="warranty.edit" />
-		<display:column>
-			<a href="warranty/administrator/edit.do?warrantyId=${warranty.id}"> <spring:message
-					code="warranty.edit.link" />
-			</a>
-		</display:column>
-	</jstl:if>
+	<display:column property="finalMode" title="${finalModeHeader}"	sortable="false" />
 
+
+		<display:column>	
+		<!-- <jstl:if test="${'warranty.finalMode' != 'true'}">	-->
+				<a href="warranty/administrator/edit.do?warrantyId=${row.id}">
+				<spring:message code="warranty.edit.link" />
+				</a>
+		<!-- </jstl:if> -->
+		</display:column>
 		
 </display:table>
 
@@ -51,5 +47,4 @@
 			code="warranty.list.create" />
 	</a>
 </div>
-
 </security:authorize>

@@ -96,8 +96,8 @@
 					<li><a href="administrator/show.do"><spring:message code="master.page.administrator.show" /></a></li>					
 					<li><a href="administrator/register.do"><spring:message code="master.page.administrator.register" /></a></li>		
 					<li><a href="referee/register.do"><spring:message code="master.page.referee.register" /></a></li>	
-					<li><a href="warranty/list.do"><spring:message code="master.page.warranties" /></a></li>	
-					<li><a href="category/list.do"><spring:message code="master.page.categories" /></a></li>	
+					<li><a href="warranty/administrator/list.do"><spring:message code="master.page.warranties" /></a></li>	
+					<li><a href="category/administrator/list.do"><spring:message code="master.page.categories" /></a></li>	
 					<li><a href="dashboard/show.do"><spring:message code="master.page.dashboard" /></a></li>	
 					<li><a href="suspactors/list.do"><spring:message code="master.page.suspactors" /></a></li>	
 					<li><a href="score/show.do"><spring:message code="master.page.score" /></a></li>	

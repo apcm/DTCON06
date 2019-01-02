@@ -18,8 +18,8 @@ public class CategoryToStringConverter implements Converter<Category, String> {
 		if (category == null)
 			res = null;
 		else
-			res = String.valueOf(category);
-
+			res = String.valueOf(category.getId());
+		//res = String.valueOf(category);
 		return res;
 	}
 

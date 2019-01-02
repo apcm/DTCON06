@@ -66,7 +66,7 @@ public class CategoryService {
 		return this.categoryRepository.findAll();
 	}
 
-	public Category findOne(final Category cat) {
-		return this.categoryRepository.findOne(cat.getId());
+	public Category findOne(final int categoryId) {
+		return this.categoryRepository.findOne(categoryId);
 	}
 }

@@ -52,6 +52,16 @@
 		<security:intercept-url pattern="/finder/handyworker/show.do" access="hasRole('HANDYWORKER')" /> 		
 		<security:intercept-url pattern="/finder/handyworker/edit.do" access="hasRole('HANDYWORKER')" /> 	
 			
+		<security:intercept-url pattern="/warranty/administrator/list.do" access="hasRole('ADMIN')" /> 	
+		<security:intercept-url pattern="/warranty/administrator/edit.do" access="hasRole('ADMIN')" /> 	
+		<security:intercept-url pattern="/warranty/administrator/**" access="hasRole('ADMIN')" /> 	
+			
+		<security:intercept-url pattern="/category/administrator/list.do" access="hasRole('ADMIN')" /> 	
+		<security:intercept-url pattern="/category/administrator/edit.do" access="hasRole('ADMIN')" /> 	
+		<security:intercept-url pattern="/category/administrator/**" access="hasRole('ADMIN')" /> 	
+					
+			
+			
 		<security:intercept-url pattern="/handyworker/register.do" access="permitAll" /> 
 		<security:intercept-url pattern="/handyworker/**" access="permitAll" /> 
 		<security:intercept-url pattern="/handyworker/handyworker/edit.do" access="permitAll" /> 
