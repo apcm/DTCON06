@@ -1,0 +1,6 @@
+package repositories;
+
+
+public interface SponsorRepository extends JpaRepository<Sponsor,Integer> {
+
+}

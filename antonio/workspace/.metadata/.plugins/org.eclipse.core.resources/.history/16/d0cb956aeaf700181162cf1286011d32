@@ -1,0 +1,20 @@
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+	name="certifications" requestURI="${requestURI}" id="row">
+	
+	<!-- Action links -->
+	
+	<!-- Attributes -->
+
+	<spring:message code="certification.title" var="titleHeader" />
+	<display:column property="title" title="${titleHeader}" sortable="true" />
+
+	<spring:message code="certification.description" var="descriptionHeader" />
+	<display:column property="description" title="${descriptionHeader}" sortable="false" />
+
+	<spring:message code="certification.extinctionDate" var="extinctionHeader" />
+	<display:column property="extinctionDate" title="${extinctionHeader}" sortable="true" format="{0,date,dd/MM/yyyy HH:mm}" />
+
+	<spring:message code="certification.fee" var="feeHeader" />
+	<display:column property="fee" title="${feeHeader}"	sortable="true" />
+	
+</display:table>

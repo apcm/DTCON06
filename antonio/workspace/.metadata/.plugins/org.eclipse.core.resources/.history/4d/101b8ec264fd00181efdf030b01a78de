@@ -1,0 +1,50 @@
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+
+<security:authorize access="hasRole('HANDYWORKER')">
+
+	<h1>
+		<spring:message code="finder.list" />
+	</h1>
+
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+	name="finders" requestURI="${requestURI}" id="row">
+	
+
+	<!-- Attributes -->
+	
+	<display:column property="title" titleKey="warranty.title" sortable="true" />
+
+	<spring:message code="warranty.terms" var="termsHeader" />
+	<display:column property="terms" title="${termsHeader}" sortable="false" />
+
+	<spring:message code="warranty.applicableLaws" var="lawsHeader" />
+	<display:column property="applicableLaws" title="${lawsHeader}" sortable="false" />
+
+	<spring:message code="warranty.finalMode" var="finalModeHeader" />
+	<display:column property="finalmode" title="${finalModeHeader}"	sortable="false" />
+	
+	<jstl:if test="${warranty.finalmode == false}">	
+		<spring:message code="warranty.edit" />
+		<display:column>
+			<a href="warranty/administrator/edit.do?warrantyId=${warranty.id}"> <spring:message
+					code="warranty.edit.link" />
+			</a>
+		</display:column>
+	</jstl:if>
+
+		
+</display:table>
+
+<div>
+	<a href="warranty/administrator/create.do"> <spring:message
+			code="warranty.list.create" />
+	</a>
+</div>
+
+</security:authorize>

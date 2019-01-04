@@ -1,0 +1,10 @@
+
+package pruebas.json;
+
+public class Prueba {
+
+	private String	nombre;
+	private Integer	número;
+	private Boolean	perro;
+
+}
