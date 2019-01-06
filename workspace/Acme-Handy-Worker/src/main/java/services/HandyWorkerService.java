@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -16,12 +17,14 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Application;
 import domain.Box;
+import domain.Category;
 import domain.Customisation;
 import domain.Endorsement;
 import domain.Finder;
 import domain.HandyWorker;
 import domain.Phase;
 import domain.SocialProfile;
+import domain.Warranty;
 
 @Service
 @Transactional
@@ -38,6 +41,12 @@ public class HandyWorkerService {
 	@Autowired
 	public FinderService			finderService;
 
+	@Autowired
+	public CategoryService			categoryService;
+
+	@Autowired
+	public WarrantyService			warrantyService;
+
 
 	//Constructor
 	public HandyWorkerService() {
@@ -48,19 +57,6 @@ public class HandyWorkerService {
 
 	//8.1
 	public HandyWorker create() {
-		//User can't be logged to register
-		//		final Authority a = new Authority();
-		//		final Authority b = new Authority();
-		//		final Authority c = new Authority();
-		//		final Authority d = new Authority();
-		//		final Authority e = new Authority();
-		//		final UserAccount user = LoginService.getPrincipal();
-		//		a.setAuthority(Authority.ADMIN);
-		//		b.setAuthority(Authority.HANDYWORKER);
-		//		c.setAuthority(Authority.CUSTOMER);
-		//		d.setAuthority(Authority.REFEREE);
-		//		e.setAuthority(Authority.SPONSOR);
-		//		Assert.isTrue(!(user.getAuthorities().contains(a) || user.getAuthorities().contains(b) || user.getAuthorities().contains(c) || user.getAuthorities().contains(d) || user.getAuthorities().contains(e)));
 
 		HandyWorker result;
 		result = new HandyWorker();
@@ -109,7 +105,7 @@ public class HandyWorkerService {
 		result.setMake("");
 		result.setPlannedPhases(phases);
 		final Finder find = this.finderService.create();
-		result.setFinder(find);
+		result.setFinder(new Finder());
 		return result;
 	}
 	//9.2
@@ -211,6 +207,28 @@ public class HandyWorkerService {
 	}
 
 	public HandyWorker saveForTest(final HandyWorker hw) {
+
+		Assert.isTrue(hw.getBan() != true);
+
+		if (hw.getId() == 0) {
+			final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+			final String oldpass = hw.getUserAccount().getPassword();
+			final String hash = encoder.encodePassword(oldpass, null);
+
+			final UserAccount cuenta = hw.getUserAccount();
+			cuenta.setPassword(hash);
+			hw.setUserAccount(cuenta);
+
+			final Finder f = new Finder();
+			f.setKeyWord("");
+			final Category cat = this.categoryService.findOne(2631);
+			f.setCategory(cat);
+			final Warranty war = this.warrantyService.findOne(2600);
+			f.setWarranty(war);
+			final Finder find = this.finderService.saveForTest(f);
+			hw.setFinder(find);
+		}
+
 		return this.handyWorkerRepository.save(hw);
 	}
 }

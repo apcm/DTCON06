@@ -19,7 +19,7 @@
 	
 	<display:column property="name" titleKey="category.name" />
 	
- 	<display:column property="parentCategory" titleKey="category.parentCategory" />
+ 	<display:column property="parentCategory.name" titleKey="category.parentCategory" />
 
 	<display:column>	
 			<a href="category/administrator/edit.do?categoryId=${row.id}">

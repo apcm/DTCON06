@@ -6,10 +6,9 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-   
+
 <security:authorize access="hasRole('ADMIN')"> 
-<form:form action="administrator/administrator/edit.do" modelAttribute="administrator">
+<form:form action="administrator/administrator/create.do" modelAttribute="administrator">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -71,7 +70,7 @@
 			<spring:message code="administrator.edit.label.phoneNumber" />:
 		</form:label>
 		<form:input path="phoneNumber"/>
-		<form:errors cssClass="error" path="phone" />
+		<form:errors cssClass="error" path="phoneNumber" />
 		
 		<br/>
 		<br/>
@@ -90,7 +89,7 @@
 	<br/>
 	<br/>
 	<fieldset>
-		<legend align="left"><spring:message code="administrator.edit.userAcount" /></legend>
+		<legend align="left"><spring:message code="administrator.edit.userAccount" /></legend>
 		<form:label path="userAccount.username">
 			<spring:message code="administrator.edit.label.username" />:
 		</form:label>

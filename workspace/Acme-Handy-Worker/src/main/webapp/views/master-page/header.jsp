@@ -91,10 +91,10 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="administrator/edit.do"><spring:message code="master.page.administrator.edit" /></a></li>
+					<li><a href="administrator/administrator/edit.do"><spring:message code="master.page.administrator.edit" /></a></li>
 					<li><a href="box/list.do"><spring:message code="master.page.boxes" /></a></li>					
 					<li><a href="administrator/show.do"><spring:message code="master.page.administrator.show" /></a></li>					
-					<li><a href="administrator/register.do"><spring:message code="master.page.administrator.register" /></a></li>		
+					<li><a href="administrator/administrator/create.do"><spring:message code="master.page.administrator.register" /></a></li>		
 					<li><a href="referee/register.do"><spring:message code="master.page.referee.register" /></a></li>	
 					<li><a href="warranty/administrator/list.do"><spring:message code="master.page.warranties" /></a></li>	
 					<li><a href="category/administrator/list.do"><spring:message code="master.page.categories" /></a></li>	

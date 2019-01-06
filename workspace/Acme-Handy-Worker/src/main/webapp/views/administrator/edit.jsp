@@ -23,9 +23,8 @@
 			<spring:message code="administrator.edit.label.name" />:
 		</form:label>
 		<form:input path="name"/>
-		
 		<form:errors cssClass="error" path="name" />		
-		
+	
 		<br/>
 		<br/>
 	
@@ -59,7 +58,7 @@
 		<form:label path="email">
 			<spring:message code="administrator.edit.label.email" />:
 		</form:label>
-		<form:input path="email"/>
+		<form:input path="email" />
 		<form:errors cssClass="error" path="email" />	
 			
 		<br/>
@@ -69,20 +68,11 @@
 			<spring:message code="administrator.edit.label.phoneNumber" />:
 		</form:label>
 		<form:input path="phoneNumber"/>
-		<form:errors cssClass="error" path="phone" />
+		<form:errors cssClass="error" path="phoneNumber" />
 		
 		<br/>
 		<br/>
-		
-		<form:label path="ban">
-			<spring:message code="administrator.edit.label.ban" />:
-		</form:label>
-		<form:input path="ban"/>
-		<form:errors cssClass="error" path="ban" />
-		
-		<br/>
-		<br/>
-		
+	
 		<form:label path="photoURL">
 			<spring:message code="administrator.edit.label.photoURL" />:
 		</form:label>
@@ -91,11 +81,14 @@
 		
 		<br/>
 		<br/>
+
+		
 	</fieldset>
+
 	
-	<input type="submit" name="save" value="<spring:message code="administrator" />" />&nbsp;
+	<input type="submit" name="save" value="<spring:message code="administrator.edit.save.save" />" />&nbsp;
 	<input type="button" name="cancel" onclick="javascript: window.location.replace('welcome/index.do')"
-			value="<spring:message code="administrator" />" />
+			value="<spring:message code="administrator.edit.cancel" />" />
 	</form:form>
 	
 	

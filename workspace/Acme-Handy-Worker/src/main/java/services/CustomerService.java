@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -231,6 +232,20 @@ public class CustomerService {
 	}
 
 	public Customer saveForTest(final Customer cus) {
+
+		// Restrictions
+		Assert.isTrue(cus.getBan() != true);
+
+		if (cus.getId() == 0) {
+			final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+			final String oldpass = cus.getUserAccount().getPassword();
+			final String hash = encoder.encodePassword(oldpass, null);
+
+			final UserAccount cuenta = cus.getUserAccount();
+			cuenta.setPassword(hash);
+			cus.setUserAccount(cuenta);
+		}
+
 		return this.customerRepository.save(cus);
 	}
 

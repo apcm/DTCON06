@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.UserAccount;
 import services.HandyWorkerService;
+import controllers.AbstractController;
 import domain.Application;
 import domain.Box;
 import domain.Curriculum;
@@ -25,7 +26,7 @@ import domain.SocialProfile;
 
 @Controller
 @RequestMapping("/handyworker/handyworker")
-public class HandyWorkerHandyWorkerController {
+public class HandyWorkerHandyWorkerController extends AbstractController {
 
 	@Autowired
 	HandyWorkerService	handyWorkerService;

@@ -103,7 +103,7 @@ public class HandyWorkerController {
 		result.addObject("socialProfiles", socialProfiles);
 		result.addObject("applications", applications);
 		result.addObject("plannedPhases", plannedPhases);
-		//	result.addObject("finder", finder);
+		result.addObject("finder", finder);
 		result.addObject("notes", notes);
 		result.addObject("curriculum", curriculum);
 		result.addObject("message", message);

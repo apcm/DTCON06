@@ -29,7 +29,7 @@ public class Finder extends DomainEntity {
 	private Date	moment;
 
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getMoment() {
 		return this.moment;
@@ -64,7 +64,7 @@ public class Finder extends DomainEntity {
 		this.maxPrice = maxPrice;
 	}
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getStartDate() {
 		return this.startDate;
@@ -73,7 +73,7 @@ public class Finder extends DomainEntity {
 		this.startDate = startDate;
 	}
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getEndDate() {
 		return this.endDate;
@@ -106,7 +106,7 @@ public class Finder extends DomainEntity {
 		this.category = category;
 	}
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Warranty getWarranty() {
 		return this.warranty;
 	}
