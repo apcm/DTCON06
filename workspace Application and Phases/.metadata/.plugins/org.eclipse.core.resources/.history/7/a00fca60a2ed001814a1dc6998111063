@@ -1,0 +1,69 @@
+
+package services;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.FixUpTaskRepository;
+import domain.Customer;
+import domain.FixUpTask;
+
+@Service
+@Transactional
+public class FixUpTaskService {
+
+	//Repositories
+	@Autowired
+	public FixUpTaskRepository	fixUpTaskRepository;
+
+	//Services
+	@Autowired
+	public CustomerService		customerService;
+
+
+	//Constructor
+	public FixUpTaskService() {
+		super();
+	}
+
+	//Simple CRUD
+
+	//10.1
+	public FixUpTask create() {
+		FixUpTask res;
+		res = new FixUpTask();
+		return res;
+	}
+
+	public FixUpTask save(final FixUpTask fixUpTask) {
+		Assert.notNull(fixUpTask);
+
+		FixUpTask res;
+		//Atributos obligatorios
+
+		res = this.fixUpTaskRepository.save(fixUpTask);
+		return res;
+	}
+
+	public void delete(final FixUpTask fixUpTask) {
+		Assert.isTrue(fixUpTask);
+
+	}
+
+	public Collection<FixUpTask> findByCustomer() {
+		Collection<FixUpTask> res;
+		final Customer customer;
+
+		//Logged customer
+		customer = this.customerService.findByPrincipal();
+		Assert.notNull(customer);
+
+		res = this.fixUpTaskRepository.findByCustomerId(customer.getId());
+		return res;
+	}
+
+}

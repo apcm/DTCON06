@@ -1,0 +1,29 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.EndorserRepository;
+
+@Service
+@Transactional
+public class EndorserService {
+
+	//Repository
+	@Autowired
+	public EndorserRepository	endorserRepository;
+
+
+	//Services
+
+	//Constructor
+	public EndorserService(){
+		super();
+	}
+	
+	
+	
+	
+}

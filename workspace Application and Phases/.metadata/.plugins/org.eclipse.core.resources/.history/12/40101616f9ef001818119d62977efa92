@@ -1,0 +1,15 @@
+package services;
+
+@Service
+@Transactional
+public class RefereeService {
+
+	//Repository
+	@Autowired
+	public RefereeRepository refereeRepository;
+	
+	//Services
+	@Autowired
+
+	
+}

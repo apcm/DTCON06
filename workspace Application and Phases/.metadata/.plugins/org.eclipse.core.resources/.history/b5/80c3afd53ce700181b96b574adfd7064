@@ -1,0 +1,85 @@
+package domain;
+
+import java.util.Date;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class Note extends Report {
+
+	private Date	moment;
+	private String	mandatoryComment;
+	private String	refereeComment;
+	private String handyWorkerComment;
+	private String customerComment;
+	private Customer customer;
+	private Referee referee;
+	private HandyWorker handyworker;
+
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getMoment() {
+		return moment;
+	}
+	public void setMoment(final Date moment) {
+		this.moment = moment;
+	}
+	@NotBlank
+	public String getMandatoryComment() {
+		return mandatoryComment;
+	}
+	public void setMandatoryComment(final String mandatoryComment) {
+		this.mandatoryComment = mandatoryComment;
+	}
+	public String getRefereeComment() {
+		return refereeComment;
+	}
+	public void setRefereeComment(final String refereeComment) {
+		this.refereeComment = refereeComment;
+	}
+	
+	public String getHandyWorkerComment() {
+		return handyWorkerComment;
+	}
+	public void setHandyWorkerComment(final String handyWorkerComment) {
+		this.handyWorkerComment = handyWorkerComment;
+	}
+public String getCustomerComment() {
+		return customerComment;
+	}
+	public void setCustomerComment(final String CustomerComment) {
+		this.customerComment = customerComment;
+	}
+@ManyToOne(optional=false)
+public Customer getCustomer(){
+return customer;
+}
+public void setCustomer(final Customer customer){
+this.customer=customer;
+}
+@ManyToOne(optional=false)
+public Referee getReferee(){
+return referee;
+}
+public void setReferee(final Referee referee){
+this.referee=referee;
+}
+
+@ManyToOne(optional=false)
+public HandyWorker getHandyWorker(){
+return handyWorker;
+}
+public void setHandyWorker(final HandyWorker handyWorker){
+this.handyWorker=handyWorker;
+}
+
+}

@@ -1,0 +1,8 @@
+
+package services;
+
+@Service
+@Transactional
+public class ApplicationService {
+
+}

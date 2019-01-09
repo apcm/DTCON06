@@ -1,0 +1,28 @@
+package services;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.SponsorRepository;
+
+@Service
+@Transactional
+public class SponsorService {
+
+	//Repository
+	public SponsorRepository sponsorRepository;
+	
+	//Services
+	
+	//Constructor
+	public SponsorService(){
+		super();
+	}
+	
+	//Simple CRUD methods
+	//47.1
+	public SponsorService create(){
+		
+	}
+	
+}

@@ -1,0 +1,13 @@
+warranty.list				= Warranties list
+warranty.title 				= Title
+warranty.terms 				= Terms
+warranty.applicableLaws 	= Applicable laws
+warranty.finalMode		 	= Final mode
+warranty.edit			 	= Edit
+warranty.delete			 	= Delete
+warranty.edit.link		 	= Edit
+warranty.delete.link	 	= Delete
+warranty.list.create		= New Warranty
+warranty.save				= Save
+warranty.cancel				= Cancel
+

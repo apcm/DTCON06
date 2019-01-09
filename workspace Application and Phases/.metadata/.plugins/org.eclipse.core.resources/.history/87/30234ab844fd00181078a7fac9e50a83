@@ -1,0 +1,11 @@
+application.list			= Lista de aplicación
+application.show			= Aplicación
+application.moment			= Momento
+application.status			= Estado
+application.offeredPrice	= Precio ofrecido
+application.comment			= Comentario
+application.rejectedCause	= Causa de rechazo
+application.edit			= Editar
+application.show			= Mostrar
+application.create			= Crear aplicación
+application.edit.customer	= Información del cliente
