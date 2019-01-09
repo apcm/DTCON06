@@ -18,16 +18,16 @@
 	
 	<definition name="handyworker/register" extends="master.page">	
 		<put-attribute name="title" value="Register handy worker" />
-		<put-attribute name="body" value="/views/handyworker/register.jsp" />
+		<put-attribute name="body" value="/views/handyWorker/register.jsp" />
 	</definition>
 	
 	<definition name="handyworker/edit" extends="master.page">	
 		<put-attribute name="title" value="Edit handy worker" />
-		<put-attribute name="body" value="/views/handyworker/edit.jsp" />
+		<put-attribute name="body" value="/views/handyWorker/edit.jsp" />
 	</definition>
 	
 	<definition name="handyworker/show" extends="master.page">	
 		<put-attribute name="title" value="Personal data" />
-		<put-attribute name="body" value="/views/handyworker/show.jsp" />
+		<put-attribute name="body" value="/views/handyWorker/show.jsp" />
 	</definition>
 </tiles-definitions>

@@ -6,10 +6,7 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-   
-<security:authorize access="isAnonymous()"> 
-<form:form action="handyworker/edit.do" modelAttribute="handyWorker">
+<form:form action="handyworker/register.do" modelAttribute="handyWorker">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="socialProfiles" />
@@ -17,7 +14,14 @@
 	<form:hidden path="userAccount.authorities" />
 	<form:hidden path="ban" />
 		
-	<form:hidden path="fixUpTasks" />
+	<form:hidden path="applications" />
+	<form:hidden path="plannedPhases" />
+	<!-- <form:hidden path="finder" /> -->
+	<form:hidden path="notes" />
+	<form:hidden path="curriculum" />
+	<form:hidden path="score" />
+	
+	
 	
 	<fieldset>
 	<legend align="left"><spring:message code="handyworker.edit.contact" /></legend>
@@ -69,7 +73,7 @@
 		<form:label path="email">
 			<spring:message code="handyworker.edit.label.email" />:
 		</form:label>
-		<form:input path="email" />
+		<form:input path="email" pattern="[A-z0-9]+@[A-z0-9.]+|[A-z0-9 ]+ <[A-z0-9]+@[A-z0-9.]+>" />
 		<form:errors cssClass="error" path="email" />	
 			
 		<br/>
@@ -78,9 +82,23 @@
 		<form:label path="phoneNumber">
 			<spring:message code="handyworker.edit.label.phoneNumber" />:
 		</form:label>
-		<form:input path="phoneNumber"/>
-		<form:errors cssClass="error" path="phone" />
-		
+		<form:input path="phoneNumber" onchange="check(this)"/>
+		<form:errors cssClass="error" path="phoneNumber" />
+<script language='javascript' type='text/javascript'>
+
+	var re = /^\+\d{1,3} \(\d{1,3}\) \d{4,}$/;
+	var re2 = /^\+\d{1,3} \d{4,}$/;
+	var re3 = /^\d{4,}$/;
+
+    function check(input) {
+    	var OK = re.exec(input.value);
+    	var OK2 = re2.exec(input.value);
+    	var OK3 = re3.exec(input.value);
+        if (!(OK || OK2 || OK3)) {
+            alert("<spring:message code="handyWorker.confirm" />" );
+        }
+    }
+</script>				
 		<br/>
 		<br/>
 	
@@ -98,7 +116,7 @@
 	<br/>
 	<br/>
 	<fieldset>
-		<legend align="left"><spring:message code="handyworker.edit.userAcount" /></legend>
+		<legend align="left"><spring:message code="handyworker.edit.userAccount" /></legend>
 		<form:label path="userAccount.username">
 			<spring:message code="handyworker.edit.label.username" />:
 		</form:label>
@@ -121,5 +139,5 @@
 			value="<spring:message code="handyworker.edit.cancel" />" />
 
 </form:form>
-</security:authorize>
+
 

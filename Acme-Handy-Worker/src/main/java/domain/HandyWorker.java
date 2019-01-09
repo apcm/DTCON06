@@ -48,7 +48,7 @@ public class HandyWorker extends Endorser {
 		this.plannedPhases = plannedPhases;
 	}
 
-	@OneToOne
+	@OneToOne(optional = true)
 	public Finder getFinder() {
 		return this.finder;
 	}

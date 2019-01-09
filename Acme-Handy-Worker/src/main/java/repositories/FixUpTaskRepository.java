@@ -26,7 +26,7 @@ public interface FixUpTaskRepository extends JpaRepository<FixUpTask, Integer> {
 	 */
 
 	//Queries 11.2
-	@Query("select f from FixUpTask f where f.description like '%?1%' or f.address like '%?1%' or f.ticker like '%?1%'")
+	@Query("select f from FixUpTask f where f.description like '%?1%' or f.ticker like '%?1%'")
 	Collection<FixUpTask> fixUpTaskFilterByKeyword(String keyword);
 
 	@Query("select f from FixUpTask f where f.category.name like '%?1%'")

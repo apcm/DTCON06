@@ -70,7 +70,11 @@ public class WarrantyService {
 		a.setAuthority(Authority.ADMIN);
 		Assert.isTrue(user.getAuthorities().contains(a));
 
-		Assert.isTrue(warranty.isFinalMode() == false);
+		if (warranty.getId() != 0) {
+			final Integer warrantyId = warranty.getId();
+			final Warranty oldWarranty = this.findOne(warrantyId);
+			Assert.isTrue(oldWarranty.isFinalMode() == false);
+		}
 
 		final Warranty res = this.warrantyRepository.save(warranty);
 
@@ -81,8 +85,8 @@ public class WarrantyService {
 		return this.warrantyRepository.findAll();
 	}
 
-	public Warranty findOne(final Warranty war) {
-		return this.warrantyRepository.findOne(war.getId());
+	public Warranty findOne(final int warrantyId) {
+		return this.warrantyRepository.findOne(warrantyId);
 	}
 
 }

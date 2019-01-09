@@ -18,7 +18,7 @@ public class FinderToStringConverter implements Converter<Finder, String> {
 		if (finder == null)
 			res = null;
 		else
-			res = String.valueOf(finder);
+			res = String.valueOf(finder.getId());
 
 		return res;
 	}

@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,14 @@ public class CategoryService {
 
 		Assert.notNull(category);
 		Assert.isTrue(category.getId() != 0);
+		Assert.isTrue(category.getName() != "CATEGORY");
+		Assert.isTrue(category.getName().equals("CATEGORY"));
+
+		Collection<Category> categories = new ArrayList<Category>();
+		categories = this.findAll();
+		for (final Category c : categories)
+			if (c.getParentCategory().equals(category))
+				this.delete(c);
 
 		this.categoryRepository.delete(category);
 
@@ -66,7 +75,7 @@ public class CategoryService {
 		return this.categoryRepository.findAll();
 	}
 
-	public Category findOne(final Category cat) {
-		return this.categoryRepository.findOne(cat.getId());
+	public Category findOne(final int categoryId) {
+		return this.categoryRepository.findOne(categoryId);
 	}
 }

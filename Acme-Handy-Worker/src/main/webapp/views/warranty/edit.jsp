@@ -39,10 +39,17 @@
 	<form:label path="finalMode">
 		<spring:message code="warranty.finalMode" />:
 	</form:label>
-	<form:input path="finalMode" />
-	<form:errors cssClass="error" path="finalMode" />
+	<form:select path="finalMode">
+		<form:option
+		 label = "false"
+		 value="false"/>
+		 <form:option
+		 label = "true"
+		 value="true"/>
+	</form:select>
+		
 	<br />	
-	
+	<br />	
 	
 
 	<input type="submit" name="save"

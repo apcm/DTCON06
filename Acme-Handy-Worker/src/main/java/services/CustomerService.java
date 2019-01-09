@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -31,7 +32,11 @@ public class CustomerService {
 	private CustomerRepository	customerRepository;
 
 	// Services
+	@Autowired
 	public AdministratorService	administratorService;
+
+	@Autowired
+	public BoxService			boxService;
 
 
 	// Constructor
@@ -61,30 +66,30 @@ public class CustomerService {
 		result = new Customer();
 
 		// Actor
-		final Box trash = new Box();
-		final Box out = new Box();
-		final Box spam = new Box();
-		final Box in = new Box();
-		trash.setName("trash");
-		in.setName("in");
-		out.setName("out");
-		spam.setName("spam");
-		out.setPredefined(true);
-		in.setPredefined(true);
-		spam.setPredefined(true);
-		trash.setPredefined(true);
+		//		final Box trash = new Box();
+		//		final Box out = new Box();
+		//		final Box spam = new Box();
+		//		final Box in = new Box();
+		//		trash.setName("trash");
+		//		in.setName("in");
+		//		out.setName("out");
+		//		spam.setName("spam");
+		//		out.setPredefined(true);
+		//		in.setPredefined(true);
+		//		spam.setPredefined(true);
+		//		trash.setPredefined(true);
 		final List<Box> predefined = new ArrayList<Box>();
-		predefined.add(in);
-		predefined.add(out);
-		predefined.add(spam);
-		predefined.add(trash);
+		//		predefined.add(in);
+		//		predefined.add(out);
+		//		predefined.add(spam);
+		//		predefined.add(trash);
 
 		final UserAccount newUser = new UserAccount();
 		final Authority f = new Authority();
 		f.setAuthority(Authority.CUSTOMER);
 		newUser.addAuthority(f);
 
-		result.setBoxes(new ArrayList<Box>(predefined));
+		result.setBoxes(predefined);
 		result.setSocialProfiles(new ArrayList<SocialProfile>());
 		result.setName("");
 		result.setEmail("");
@@ -92,6 +97,7 @@ public class CustomerService {
 		result.setSurname("");
 		result.setPhoneNumber("");
 		result.setPhotoURL("");
+		result.setUserAccount(newUser);
 
 		// Customer
 		result.setScore(0);
@@ -230,7 +236,32 @@ public class CustomerService {
 	}
 
 	public Customer saveForTest(final Customer cus) {
+
+		// Restrictions
+		Assert.isTrue(cus.getBan() != true);
+
+		if (cus.getId() == 0) {
+			final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+			final String oldpass = cus.getUserAccount().getPassword();
+			final String hash = encoder.encodePassword(oldpass, null);
+
+			final UserAccount cuenta = cus.getUserAccount();
+			cuenta.setPassword(hash);
+			cus.setUserAccount(cuenta);
+
+			//			final Box in1 = new Box();
+			//			in1.setName("In");
+			//			in1.setPredefined(true);
+			//			final Box in = this.boxService.save(in1);
+			//
+			//			final Collection<Box> boxesPredefined = new ArrayList<Box>();
+			//			boxesPredefined.add(in);
+			//			cus.setBoxes(boxesPredefined);
+		}
+
 		return this.customerRepository.save(cus);
 	}
-
+	public Customer findOne(final int customerId) {
+		return this.customerRepository.findOne(customerId);
+	}
 }

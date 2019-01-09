@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -46,25 +47,25 @@ public class AdministratorService {
 		res.setUserAccount(newUser);
 
 		//Actor
-		final Box trash = new Box();
-		final Box out = new Box();
-		final Box spam = new Box();
-		final Box in = new Box();
-		trash.setName("trash");
-		in.setName("in");
-		out.setName("out");
-		spam.setName("spam");
-		out.setPredefined(true);
-		in.setPredefined(true);
-		spam.setPredefined(true);
-		trash.setPredefined(true);
+		//		final Box trash = new Box();
+		//		final Box out = new Box();
+		//		final Box spam = new Box();
+		//		final Box in = new Box();
+		//		trash.setName("trash");
+		//		in.setName("in");
+		//		out.setName("out");
+		//		spam.setName("spam");
+		//		out.setPredefined(true);
+		//		in.setPredefined(true);
+		//		spam.setPredefined(true);
+		//		trash.setPredefined(true);
 		final List<Box> predefined = new ArrayList<Box>();
-		predefined.add(in);
-		predefined.add(out);
-		predefined.add(spam);
-		predefined.add(trash);
+		//		predefined.add(in);
+		//		predefined.add(out);
+		//		predefined.add(spam);
+		//		predefined.add(trash);
 
-		res.setBoxes(new ArrayList<Box>(predefined));
+		res.setBoxes(predefined);
 		res.setSocialProfiles(new ArrayList<SocialProfile>());
 		res.setName("");
 		res.setEmail("");
@@ -103,6 +104,19 @@ public class AdministratorService {
 	}
 
 	public Administrator save(final Administrator admin) {
+		// Restrictions
+		Assert.isTrue(admin.getBan() != true);
+
+		if (admin.getId() == 0) {
+			final Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+			final String oldpass = admin.getUserAccount().getPassword();
+			final String hash = encoder.encodePassword(oldpass, null);
+
+			final UserAccount cuenta = admin.getUserAccount();
+			cuenta.setPassword(hash);
+			admin.setUserAccount(cuenta);
+		}
+
 		return this.administratorRepository.save(admin);
 	}
 

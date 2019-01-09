@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <security:authorize access="hasRole('HANDYWORKER')">
@@ -17,10 +17,11 @@
 	<form:hidden path="boxes" />
 	<form:hidden path="socialProfiles" />
 	<form:hidden path="ban" />
+	<form:hidden path="score" />
 		
 	<form:hidden path="applications" />
 	<form:hidden path="plannedPhases" />
-	<form:hidden path="finders" />
+	<form:hidden path="finder" />
 	<form:hidden path="curriculum" />
 	
 	
@@ -67,7 +68,7 @@
 		<form:label path="email">
 			<spring:message code="handyworker.edit.label.email" />:
 		</form:label>
-		<form:input path="email"/>
+		<form:input path="email" pattern="[A-z0-9]+@[A-z0-9.]+|[A-z0-9 ]+ <[A-z0-9]+@[A-z0-9.]+>"/>
 		<form:errors cssClass="error" path="email" />	
 			
 		<br/>
@@ -76,20 +77,26 @@
 		<form:label path="phoneNumber">
 			<spring:message code="handyworker.edit.label.phoneNumber" />:
 		</form:label>
-		<form:input path="phoneNumber"/>
-		<form:errors cssClass="error" path="phone" />
-		
+		<form:input path="phoneNumber" onchange="check(this)"/>
+		<form:errors cssClass="error" path="phoneNumber"  />
+	<script language='javascript' type='text/javascript'>
+
+	var re = /^\+\d{1,3} \(\d{1,3}\) \d{4,}$/;
+	var re2 = /^\+\d{1,3} \d{4,}$/;
+	var re3 = /^\d{4,}$/;
+
+    function check(input) {
+    	var OK = re.exec(input.value);
+    	var OK2 = re2.exec(input.value);
+    	var OK3 = re3.exec(input.value);
+        if (!(OK || OK2 || OK3)) {
+            alert("<spring:message code="handyWorker.confirm" />" );
+        }
+    }
+</script>			
 		<br/>
 		<br/>
 		
-		<form:label path="ban">
-			<spring:message code="handyworker.edit.label.ban" />:
-		</form:label>
-		<form:input path="ban"/>
-		<form:errors cssClass="error" path="ban" />
-		
-		<br/>
-		<br/>
 		
 		<form:label path="photoURL">
 			<spring:message code="handyworker.edit.label.photoURL" />:
@@ -101,9 +108,9 @@
 		<br/>
 	</fieldset>
 	
-	<input type="submit" name="save" value="<spring:message code="handyworker" />" />&nbsp;
+	<input type="submit" name="save" value="<spring:message code="handyworker.edit.save.save" />" />&nbsp;
 	<input type="button" name="cancel" onclick="javascript: window.location.replace('welcome/index.do')"
-			value="<spring:message code="handyworker" />" />
+			value="<spring:message code="handyworker.edit.cancel" />" />
 	</form:form>
 	
 	<br/><br/>

@@ -170,10 +170,7 @@ public class FixUpTaskService {
 		Assert.isTrue(user.getAuthorities().contains(a));
 
 		final ArrayList<FixUpTask> res = new ArrayList<>();
-		System.out.println("antes de la query");
-		System.out.println("res: " + this.fixUpTaskRepository.fixUpTaskFilterByKeyword(keyword));
 		res.addAll(this.fixUpTaskRepository.fixUpTaskFilterByKeyword(keyword));
-		System.out.println("FUTs: " + res);
 		return res;
 
 	}
@@ -209,8 +206,8 @@ public class FixUpTaskService {
 		a.setAuthority(Authority.HANDYWORKER);
 		Assert.isTrue(user.getAuthorities().contains(a));
 
-		Collection<FixUpTask> res;
-		res = this.fixUpTaskRepository.fixUpTaskFilterByRangeOfDates(minDate, maxDate);
+		final Collection<FixUpTask> res = null;
+		//res = this.fixUpTaskRepository.fixUpTaskFilterByRangeOfDates(minDate, maxDate);
 		return res;
 	}
 

@@ -486,12 +486,11 @@
 	
 		<bean id="finder1" class="domain.Finder">
 		<property name="keyWord" value="Puertas de madera"/>
-		<property name="category" value="Puertas"/>
 		<property name="minPrice" ref="money1"/>
 		<property name="maxPrice" ref="money2"/>
 		<property name="startDate" value="20/12/2018"/>
 		<property name="endDate" value="21/12/2018"/>
-		<property name="warranty" value="Garantia española"/>
+		<property name="warranty" ref="warranty1"/>
 		<property name="moment" value="12/02/2018 14:00:01"/>
 		<property name="fixUpTasks">
 		<list><!--
@@ -499,16 +498,17 @@
 					-->
 		</list>
 		</property>
+		<property name="category" ref="category1"/>
 		</bean>
 		
 		<bean id="finder2" class="domain.Finder">
 		<property name="keyWord" value="Puertas de aluminio"/>
-		<property name="category" value="Puertas"/>
+		<property name="category" ref="category4"/>
 		<property name="minPrice" ref="money1"/>
 		<property name="maxPrice" ref="money3"/>
 		<property name="startDate" value="10/12/2018"/>
 		<property name="endDate" value="21/12/2018"/>
-		<property name="warranty" value="Garantia inglesa"/>
+		<property name="warranty" ref="warranty1"/>
 		<property name="moment" value="12/02/2018 14:00:01"/>
 		<property name="fixUpTasks">
 		<list><!--
@@ -520,12 +520,12 @@
 		
 		<bean id="finder3" class="domain.Finder">
 		<property name="keyWord" value="Puertas de hierro"/>
-		<property name="category" value="Puertas"/>
+		<property name="category" ref="category1"/>
 		<property name="minPrice" ref="money1"/>
 		<property name="maxPrice" ref="money3"/>
 		<property name="startDate" value="15/12/2018"/>
 		<property name="endDate" value="21/12/2018"/>
-		<property name="warranty" value="Garantia 3"/>
+		<property name="warranty" ref="warranty2"/>
 		<property name="moment" value="12/02/2018 14:00:01"/>
 		<property name="fixUpTasks">
 		<list><!--
@@ -537,12 +537,12 @@
 		
 	<bean id="finder4" class="domain.Finder">
 		<property name="keyWord" value="Cerradura"/>
-		<property name="category" value="Seguridad"/>
+		<property name="category" ref="category2"/>
 		<property name="minPrice" ref="money5"/>
 		<property name="maxPrice" ref="money6"/>
 		<property name="startDate" value="15/12/2018"/>
 		<property name="endDate" value="21/12/2018"/>
-		<property name="warranty" value="Garantia 4"/>
+		<property name="warranty" ref="warranty3"/>
 		<property name="moment" value="12/02/2018 14:00:01"/>
 		<property name="fixUpTasks">
 		<list><!--
@@ -554,12 +554,12 @@
 		
 		<bean id="finder5" class="domain.Finder">
 		<property name="keyWord" value="Encalar"/>
-		<property name="category" value="Pintura"/>
+		<property name="category" ref="category3"/>
 		<property name="minPrice" ref="money1"/>
 		<property name="maxPrice" ref="money3"/>
 		<property name="startDate" value="15/12/2018"/>
 		<property name="endDate" value="21/12/2018"/>
-		<property name="warranty" value="Garantia 5"/>
+		<property name="warranty" ref="warranty4"/>
 		<property name="moment" value="12/02/2018 14:00:01"/>
 		<property name="fixUpTasks">
 		<list><!--
