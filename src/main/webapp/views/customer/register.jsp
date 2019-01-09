@@ -60,18 +60,32 @@
 		<form:label path="email">
 			<spring:message code="customer.edit.label.email" />:
 		</form:label>
-		<form:input path="email" />
+		<form:input path="email" pattern="[A-z0-9]+@[A-z0-9.]+|[A-z0-9 ]+ <[A-z0-9]+@[A-z0-9.]+>"/>
 		<form:errors cssClass="error" path="email" />	
-			
 		<br/>
 		<br/>
 		
 		<form:label path="phoneNumber">
 			<spring:message code="customer.edit.label.phoneNumber" />:
 		</form:label>
-		<form:input path="phoneNumber"/>
+		<form:input path="phoneNumber" onchange="check(this)" />
 		<form:errors cssClass="error" path="phoneNumber" />
 		
+<script language='javascript' type='text/javascript'>
+
+	var re = /^\+\d{1,3} \(\d{1,3}\) \d{4,}$/;
+	var re2 = /^\+\d{1,3} \d{4,}$/;
+	var re3 = /^\d{4,}$/;
+
+    function check(input) {
+    	var OK = re.exec(input.value);
+    	var OK2 = re2.exec(input.value);
+    	var OK3 = re3.exec(input.value);
+        if (!(OK || OK2 || OK3)) {
+            alert("<spring:message code="customer.confirm" />" );
+        }
+    }
+</script>		
 		<br/>
 		<br/>
 	

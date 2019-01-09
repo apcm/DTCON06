@@ -108,10 +108,17 @@ public class CategoryAdministratorController extends AbstractController {
 		ModelAndView result;
 		Collection<Category> parentCategories;
 		parentCategories = this.categoryService.findAll();
+		Collection<Category> parentCategoriesSinHijas;
+		parentCategoriesSinHijas = this.categoryService.findAll();
+
+		//Se muestran todas menos las hijas
+		for (final Category c : parentCategories)
+			if (c.getParentCategory().equals(category))
+				parentCategoriesSinHijas.remove(c);
 
 		result = new ModelAndView("category/edit");
 		result.addObject("category", category);
-		result.addObject("parentCategories", parentCategories);
+		result.addObject("parentCategories", parentCategoriesSinHijas);
 		result.addObject("message", message);
 
 		return result;

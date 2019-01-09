@@ -18,7 +18,7 @@ public class PhaseToStringConverter implements Converter<Phase, String> {
 		if (phase == null)
 			res = null;
 		else
-			res = String.valueOf(phase);
+			res = String.valueOf(phase.getId());
 
 		return res;
 	}

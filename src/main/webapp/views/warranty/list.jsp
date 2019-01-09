@@ -33,11 +33,11 @@
 
 
 		<display:column>	
-		<!-- <jstl:if test="${'warranty.finalMode' != 'true'}">	-->
+		<jstl:if test="${row.finalMode == false}">
 				<a href="warranty/administrator/edit.do?warrantyId=${row.id}">
 				<spring:message code="warranty.edit.link" />
 				</a>
-		<!-- </jstl:if> -->
+		</jstl:if>
 		</display:column>
 		
 </display:table>

@@ -18,7 +18,7 @@ public class CurriculumToStringConverter implements Converter<Curriculum, String
 		if (curriculum == null)
 			res = null;
 		else
-			res = String.valueOf(curriculum);
+			res = String.valueOf(curriculum.getId());
 
 		return res;
 	}

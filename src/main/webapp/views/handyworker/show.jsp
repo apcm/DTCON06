@@ -11,48 +11,44 @@
 
 <security:authorize access="hasRole('HANDYWORKER')">
 
-	<h1>
-		<spring:message code="handyworker.show" />
-	</h1>
-	
-	<p>
-		<spring:message code="handyworker.edit.label.name" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.name" />:
+	</h4>
 	<jstl:out value="${handyworker.name}"></jstl:out>
 	
-	<p>
-		<spring:message code="handyworker.edit.label.middleName" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.middleName" />:
+	</h4>
 	<jstl:out value="${handyworker.middleName}"></jstl:out>
 
-	<p>
-		<spring:message code="handyworker.edit.label.surName" />
-	</p>
-	<jstl:out value="${handyworker.surName}"></jstl:out>
+	<h4>
+		<spring:message code="handyworker.edit.label.surname" />:
+	</h4>
+	<jstl:out value="${handyworker.surname}"></jstl:out>
 	
-	<p>
-		<spring:message code="handyworker.edit.label.address" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.address" />:
+	</h4>
 	<jstl:out value="${handyworker.address}"></jstl:out>
 	
-	<p>
-		<spring:message code="handyworker.edit.label.email" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.email" />:
+	</h4>
 	<jstl:out value="${handyworker.email}"></jstl:out>
 	
-	<p>
-		<spring:message code="handyworker.edit.label.phoneNumber" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.phoneNumber" />:
+	</h4>
 	<jstl:out value="${handyworker.phoneNumber}"></jstl:out>
 
-	<p>
-		<spring:message code="handyworker.edit.label.username" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.username" />:
+	</h4>
 	<jstl:out value="${handyworker.userAccount.username}"></jstl:out>
 
-	<p>
-		<spring:message code="handyworker.edit.label.make" />
-	</p>
+	<h4>
+		<spring:message code="handyworker.edit.label.make" />:
+	</h4>
 	<jstl:out value="${handyworker.make}"></jstl:out>
 
 

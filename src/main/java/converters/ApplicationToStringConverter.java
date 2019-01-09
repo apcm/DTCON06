@@ -18,7 +18,7 @@ public class ApplicationToStringConverter implements Converter<Application, Stri
 		if (application == null)
 			res = null;
 		else
-			res = String.valueOf(application);
+			res = String.valueOf(application.getId());
 
 		return res;
 	}

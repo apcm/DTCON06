@@ -9,49 +9,46 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="hasRole('ADMIN')">
+<security:authorize access="hasRole('CUSTOMER')">
+	
+	<h4>
+		<spring:message code="customer.edit.label.name" />:
+	</h4>
+	<jstl:out value="${customer.name}"></jstl:out>
+	
+	<h4>
+		<spring:message code="customer.edit.label.middleName" />:
+	</h4>
+	<jstl:out value="${customer.middleName}"></jstl:out>
 
-	<h1>
-		<spring:message code="administrator.show" />
-	</h1>
+	<h4>
+		<spring:message code="customer.edit.label.surname" />:
+	</h4>
+	<jstl:out value="${customer.surname}"></jstl:out>
 	
-	<p>
-		<spring:message code="administrator.edit.label.name" />
-	</p>
-	<jstl:out value="${administrator.name}"></jstl:out>
+	<h4>
+		<spring:message code="customer.edit.label.address" />:
+	</h4>
+	<jstl:out value="${customer.address}"></jstl:out>
 	
-	<p>
-		<spring:message code="administrator.edit.label.middleName" />
-	</p>
-	<jstl:out value="${administrator.middleName}"></jstl:out>
+	<h4>
+		<spring:message code="customer.edit.label.email" />:
+	</h4>
+	<jstl:out value="${customer.email}"></jstl:out>
+	
+	<h4>
+		<spring:message code="customer.edit.label.phoneNumber" />:
+	</h4>
+	<jstl:out value="${customer.phoneNumber}"></jstl:out>
 
-	<p>
-		<spring:message code="administrator.edit.label.surName" />
-	</p>
-	<jstl:out value="${administrator.surName}"></jstl:out>
-	
-	<p>
-		<spring:message code="administrator.edit.label.address" />
-	</p>
-	<jstl:out value="${administrator.address}"></jstl:out>
-	
-	<p>
-		<spring:message code="administrator.edit.label.email" />
-	</p>
-	<jstl:out value="${administrator.email}"></jstl:out>
-	
-	<p>
-		<spring:message code="administrator.edit.label.phoneNumber" />
-	</p>
-	<jstl:out value="${administrator.phoneNumber}"></jstl:out>
-
-	<p>
-		<spring:message code="administrator.edit.label.username" />
-	</p>
-	<jstl:out value="${administrator.userAccount.username}"></jstl:out>
-
+	<h4>
+		<spring:message code="customer.edit.label.username" />:
+	</h4>
+	<jstl:out value="${customer.userAccount.username}"></jstl:out>
+<br/>
+<br/>
 
 	<input type="button" name="back" onclick="javascript: window.location.replace('welcome/index.do')"
-		value="<spring:message code="administrator.back" />" />
+		value="<spring:message code="customer.back" />" />
 	
 </security:authorize>

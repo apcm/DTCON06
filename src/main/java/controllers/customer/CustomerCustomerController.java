@@ -59,7 +59,7 @@ public class CustomerCustomerController {
 		else
 			try {
 				this.customerService.save(customer);
-				result = new ModelAndView("redirect:welcome/index.do");
+				result = new ModelAndView("redirect:http://localhost:8080/Acme-Handy-Worker");
 			} catch (final Throwable error) {
 				result = this.createEditEditModelAndView(customer, "customer.comit.error");
 				System.out.println(error.getMessage());
@@ -99,6 +99,62 @@ public class CustomerCustomerController {
 		//	boxes = null;
 
 		result = new ModelAndView("customer/edit");
+		result.addObject("customer", customer);
+		result.addObject("boxes", boxes);
+		result.addObject("socialProfiles", socialProfiles);
+		result.addObject("message", message);
+		result.addObject("endorsements", endorsements);
+		result.addObject("fixUpTasks", fixUpTasks);
+		result.addObject("userAccount", userAccount);
+		return result;
+	}
+
+	////////////////////////////
+	//////////SHOW//////////////
+	////////////////////////////
+
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public ModelAndView show() {
+		ModelAndView res;
+		Customer customer;
+
+		customer = this.customerService.findByPrincipal();
+		//customer = this.customerService.findOne(customerId);
+		res = this.createShowModelAndView(customer);
+		return res;
+
+	}
+
+	protected ModelAndView createShowModelAndView(final Customer customer) {
+		ModelAndView result;
+
+		result = this.createShowModelAndView(customer, null);
+
+		return result;
+
+	}
+
+	protected ModelAndView createShowModelAndView(final Customer customer, final String message) {
+		ModelAndView result;
+		Collection<Box> boxes;
+		final Collection<SocialProfile> socialProfiles;
+		final Collection<Endorsement> endorsements;
+		final Collection<FixUpTask> fixUpTasks;
+		UserAccount userAccount;
+
+		fixUpTasks = customer.getFixUpTasks();
+		boxes = customer.getBoxes();
+		socialProfiles = customer.getSocialProfiles();
+		endorsements = customer.getEndorsements();
+		userAccount = customer.getUserAccount();
+		//		 if (socialProfiles.isEmpty())
+		//		 * socialProfiles = null;
+		//		 * if (endorsements.isEmpty())
+		//		 * endorsements = null;
+		//if (boxes.isEmpty())
+		//	boxes = null;
+
+		result = new ModelAndView("customer/show");
 		result.addObject("customer", customer);
 		result.addObject("boxes", boxes);
 		result.addObject("socialProfiles", socialProfiles);
