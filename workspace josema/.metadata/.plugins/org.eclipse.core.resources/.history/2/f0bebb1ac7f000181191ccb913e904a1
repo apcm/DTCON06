@@ -1,0 +1,20 @@
+package services;
+
+@Service
+@Transactional
+public class ActorService {
+
+	//Repository
+	@Autowired
+	public ActorRepository actorRepository;
+	
+	//Services
+	
+	//Constructor
+	public ActorService(){
+		super();
+	}
+	
+	//Simple CRUD methods
+	
+}

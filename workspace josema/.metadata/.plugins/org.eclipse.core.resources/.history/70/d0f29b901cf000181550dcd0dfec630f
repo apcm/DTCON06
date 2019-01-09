@@ -1,0 +1,30 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.TutorialRepository;
+
+@Service
+@Transactional
+public class TutorialService {
+
+	//Repository
+	@Autowired
+	public TutorialRepository	tutorialRepository;
+
+
+	//Services
+
+	//Constructor
+	public TutorialService() {
+		super();
+	}
+
+	//Complex methods
+	//47.2
+	
+	
+}

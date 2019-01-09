@@ -1,0 +1,7 @@
+package services;
+
+@Service
+@
+public class CustomerService {
+
+}

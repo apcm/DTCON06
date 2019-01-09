@@ -1,0 +1,15 @@
+package services;
+
+@Service
+@Transactional
+public class SponsorService {
+
+	//Repository
+	public SponsorRepository sponsorRepository;
+	
+	//Services
+	
+	//Constructor
+	public
+	
+}

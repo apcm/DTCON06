@@ -1,0 +1,11 @@
+application.list			= Applications list
+application.show			= Application
+application.moment			= Moment
+application.status			= Status
+application.offeredPrice	= Offered price
+application.comment			= Comment
+application.rejectedCause	= RejectedCause
+application.edit			= Edit
+application.show			= Show
+application.create			= Create application
+application.edit.customer	 = Customer data

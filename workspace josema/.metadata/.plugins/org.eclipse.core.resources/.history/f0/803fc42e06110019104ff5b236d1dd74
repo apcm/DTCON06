@@ -1,0 +1,25 @@
+administrator.edit.save				= Save
+administrator.edit.cancel			= Cancel
+administrator.edit.confirm.delete	= Are you sure about deleting this account?
+administrator.edit.delete			= Delete
+administrator.commit.error			= Cannot commit the operation
+
+administrator.edit.contact			= Contact information
+administrator.edit.userAccount		= Account information
+
+administrator.edit.label.name		= Name
+administrator.edit.label.surname		= Surname
+administrator.edit.label.middleName 	= Middle name
+administrator.edit.label.email		= Email
+administrator.edit.label.address		= Address
+administrator.edit.label.phoneNumber	= Phone number
+administrator.edit.label.photoURL	= Photo URL 
+administrator.edit.label.username	= Username
+administrator.edit.label.password	= Password
+
+administrator.edit.save				= Register
+administrator.edit.save.save			= Save
+administrator.edit.cancel			= Cancel
+
+administrator.show						= Personal data
+admministrator.commit.error			= Errors

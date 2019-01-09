@@ -1,0 +1,29 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.BoxRepository;
+
+@Service
+@Transactional
+public class BoxService {
+
+	//Repository
+	@Autowired
+	public BoxRepository	boxRepository;
+
+
+	//Services
+
+	//Constructor
+	public BoxService() {
+		super();
+	}
+	
+	//Simple CRUD
+	
+
+}

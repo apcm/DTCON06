@@ -1,0 +1,79 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.CategoryRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
+import domain.Category;
+
+@Service
+@Transactional
+public class CategoryService {
+
+	@Autowired
+	public CategoryRepository	categoryRepository;
+
+
+	//12.3
+	public Category create() {
+		//Logged user must be an administrator
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		final Category result = new Category();
+		result.setParentCategory(new Category());
+
+		return result;
+	}
+	public Category save(final Category category) {
+		//Logged user must be an administrator
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		Assert.notNull(category);
+
+		Category res;
+		res = this.categoryRepository.save(category);
+		return res;
+	}
+
+	public void delete(final Category category) {
+		//Logged user must be an administrator
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.ADMIN);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		Assert.notNull(category);
+		Assert.isTrue(category.getId() != 0);
+
+		Collection<Category> categories = new ArrayList<Category>();
+		categories = this.findAll();
+		for (final Category c : categories)
+			if (c.getParentCategory() == category)
+				this.delete(c);
+
+		this.categoryRepository.delete(category);
+
+	}
+	public Collection<Category> findAll() {
+		return this.categoryRepository.findAll();
+	}
+
+	public Category findOne(final int categoryId) {
+		return this.categoryRepository.findOne(categoryId);
+	}
+}
