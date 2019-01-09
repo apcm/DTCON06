@@ -1,0 +1,23 @@
+
+package services;
+
+import org.springframework.stereotype.Service;
+
+import repositories.HandyWorkerRepository;
+
+@Service
+@Transactional
+public class HandyWorkerService {
+
+	//Repository
+	public HandyWorkerRepository	handyWorkerRepository;
+
+
+	//Services
+
+	//Constructor
+	public HandyWorkerService() {
+		super();
+	}
+
+}

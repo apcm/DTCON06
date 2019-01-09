@@ -1,0 +1,18 @@
+package services;
+
+@Service
+@Transactional
+public class EndorserService {
+
+	//Repository
+	@Autowired
+	public EndorserRepository endorserRepository;
+	
+	//Services
+	
+	//Constructor
+	public EndorserService(){
+		public();
+	}
+	
+}

@@ -1,0 +1,7 @@
+package repositories;
+
+
+@Repository
+public class ApplicationRepositoryextends JpaRepository<Application, Integer> {
+
+}

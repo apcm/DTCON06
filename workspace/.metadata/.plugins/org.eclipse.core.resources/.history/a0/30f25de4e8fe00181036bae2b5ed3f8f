@@ -1,0 +1,14 @@
+finder.show			= Buscador
+finder.keyWord		= Palabra(s) clave
+finder.category		= Categoría
+finder.minPrice		= Precio mínimo
+finder.maxPrice		= Precio máximo
+finder.startDate	= Fecha de comienzo
+finder.endDate		= Fecha de fin
+finder.warranty		= Garantía
+finder.results		= Resultados
+finder.edit			= Editar
+finder.back			= Volver
+finder.edit.header	= Editar buscador
+finder.cancel		= Cancelar
+fixUpTask.show.link	= Ver

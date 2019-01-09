@@ -1,0 +1,30 @@
+# messages_es.properties
+#
+# Copyright (C) 2018 Universidad de Sevilla
+# 
+# The use of this project is hereby constrained to the conditions of the 
+# TDG Licence, a copy of which you may download from 
+# http://www.tdg-seville.info/License.html
+
+
+user.edit.save				= Guardar
+user.edit.cancel			= Cancelar
+user.edit.confirm.delete	= ¿Está seguro de eliminar su cuenta?
+user.edit.delete			= Eliminar
+user.commit.error			= No se pudo realizar la operación
+
+user.edit.contact			= Información de contacto
+user.edit.userAccount		= Información de la cuenta
+
+user.edit.label.name		= Nombre
+user.edit.label.surname		= Apellidos
+user.edit.label.middleName 	= Segundo nombre
+user.edit.label.email		= Correo electrónico
+user.edit.label.address		= Dirección
+user.edit.label.phoneNumber	= Teléfono
+user.edit.label.photoURL	= Foto (URL)
+user.edit.label.username	= Username
+user.edit.label.password	= Password
+
+user.edit.save				= Registrar
+user.edit.cancel			= Cancelar

@@ -1,0 +1,33 @@
+
+package services;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.HandyWorkerRepository;
+import domain.HandyWorker;
+
+@Service
+@Transactional
+public class HandyWorkerService {
+
+	//Repository
+	public HandyWorkerRepository	handyWorkerRepository;
+
+
+	//Services
+
+	//Constructor
+	public HandyWorkerService() {
+		super();
+	}
+
+	//Simple CRUD
+
+	//9.1
+	public HandyWorker create() {
+		HandyWorker res;
+		res = new HandyWorker();
+		return res;
+	}
+}

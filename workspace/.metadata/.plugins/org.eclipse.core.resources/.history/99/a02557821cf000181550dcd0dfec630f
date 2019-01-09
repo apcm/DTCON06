@@ -1,0 +1,18 @@
+package services;
+
+@Service
+@Transactional
+public class TutorialService {
+	
+	//Repository
+	Public TutorialRepository tutorialRepository;
+	
+	//Services
+	
+	//Constructor
+	public TutorialService(){
+		super();
+	}
+	
+	
+}

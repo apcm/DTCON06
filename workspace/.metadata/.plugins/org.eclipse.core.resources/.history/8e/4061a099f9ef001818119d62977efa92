@@ -1,0 +1,25 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.RefereeRepository;
+
+@Service
+@Transactional
+public class RefereeService {
+
+	//Repository
+	@Autowired
+	public RefereeRepository	refereeRepository;
+
+
+	//Services
+
+	//Constructor
+	public RefereeService() {
+		super();
+	}
+}

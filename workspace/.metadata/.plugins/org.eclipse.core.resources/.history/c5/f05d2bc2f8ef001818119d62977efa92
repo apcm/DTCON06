@@ -1,0 +1,6 @@
+package repositories;
+
+@Repository
+public interface RefereeRepository extends JpaRepository<Referee,Integer>{
+
+}

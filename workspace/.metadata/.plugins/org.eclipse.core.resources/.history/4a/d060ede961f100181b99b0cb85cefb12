@@ -1,0 +1,108 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.PhaseRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
+import domain.Application;
+import domain.Customer;
+import domain.FixUpTask;
+import domain.HandyWorker;
+import domain.Phase;
+
+@Service
+@Transactional
+public class PhaseService {
+
+	//Repository
+	@Autowired
+	public PhaseRepository		phaseRepository;
+
+	//Services
+	@Autowired
+	public HandyWorkerService	handyWorkerService;
+
+
+	//Constructor
+	public PhaseService() {
+		super();
+	}
+
+	//Simple CRUD methods
+	//11.4
+	public Phase create() {
+		//Logged user must be a handyWorker
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.HANDYWORKER);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		final Phase res = new Phase();
+		//TODO: Revisar create
+		return res;
+	}
+
+	public Collection<Phase> findByHandyWorker() {
+		//Logged user must be a handyWorker
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.HANDYWORKER);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		final HandyWorker handyWorker;
+		handyWorker = this.handyWorkerService.findByPrincipal();
+		Assert.notNull(handyWorker);
+		Assert.notNull(handyWorker.getId());
+
+		Collection<Phase> res;
+		res = this.phaseRepository.findByHandyWorkerId(handyWorker.getId());
+		return res;
+	}
+
+	public Phase save(final Phase phase) {
+		Assert.notNull(phase);
+
+		final Phase res;
+
+		//Logged user must be a handyWorker
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.HANDYWORKER);
+		Assert.isTrue(user.getAuthorities().contains(a));
+
+		//Logged customer is application's owner
+		final Customer logCustomer;
+		logCustomer = this.customerService.findByPrincipal();
+		Assert.notNull(logCustomer);
+		Assert.notNull(logCustomer.getId());
+		final List<Application> l1 = new ArrayList<Application>();
+		final Collection<FixUpTask> col1 = logCustomer.getFixUpTasks();
+		for (final FixUpTask f : col1)
+			l1.addAll(f.getApplications());
+		Assert.isTrue(l1.contains(application));
+		//Atributes that cant be changed
+		final Application oldApplication = this.applicationRepository.findById(application.getId());
+		Assert.isTrue(application.getMoment() == oldApplication.getMoment());
+		Assert.isTrue(application.getOfferedPrice() == oldApplication.getOfferedPrice());
+		Assert.notNull(application.getStatus());
+		Assert.isTrue(application.getStatus() == "pending" || application.getStatus() == "accepted" || application.getStatus() == "rejected");
+		Assert.notNull(application.getComment());
+		//L
+		if (application.getStatus().equals("accepted"))
+			Assert.notNull(application.getCreditCard());
+		else if (application.getStatus().equals("rejected"))
+			Assert.notNull(application.getRejectedCause());
+			res = this.applicationRepository.save(application);
+		return res;		
+	}
+}
