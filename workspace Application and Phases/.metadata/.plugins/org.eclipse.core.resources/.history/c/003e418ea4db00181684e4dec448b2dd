@@ -1,0 +1,44 @@
+
+package pruebas.json;
+
+public class Prueba {
+
+	private String	nombre;
+	private Integer	número;
+	private Boolean	perro;
+	public Prueba() {
+		super();
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public Integer getNúmero() {
+		return número;
+	}
+	
+	public void setNúmero(Integer número) {
+		this.número = número;
+	}
+	
+	public Boolean getPerro() {
+		return perro;
+	}
+	
+	public void setPerro(Boolean perro) {
+		this.perro = perro;
+	}
+
+	@Override
+	public String toString() {
+		return "Prueba [nombre=" + nombre + ", número=" + número + ", perro=" + perro + "]";
+	}
+	
+	
+
+}

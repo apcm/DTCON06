@@ -1,0 +1,33 @@
+
+package domain;
+
+import java.util.Date;
+
+import utilities.internal.SchemaPrinter;
+
+import com.google.gson.Gson;
+
+public class MainPruebas {
+
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+		final Message m = new Message();
+		final Date moment = new Date(2018, 2, 10);
+		m.setMoment(moment);
+		m.setBody("Nice Work Dude!");
+		m.setPriority("LOW");
+		m.setFlagSpam(false);
+		m.setSubject("My fixup task");
+		m.setTag("door");
+		m.setId(0);
+
+		final Gson gson = new Gson();
+		final String json = gson.toJson(m);
+		final Message m2 = gson.fromJson(json, Message.class);
+		final SchemaPrinter sp = new SchemaPrinter();
+		SchemaPrinter.print(m2);
+	}
+
+}

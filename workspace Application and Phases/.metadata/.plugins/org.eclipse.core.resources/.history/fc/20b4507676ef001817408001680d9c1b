@@ -1,0 +1,13 @@
+package services;
+
+@Service
+@Transactional
+public class BoxService {
+
+	//Repository
+	@Autowired
+	public BoxRepository boxRepository();
+	
+	
+	
+}

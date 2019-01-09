@@ -1,0 +1,33 @@
+# messages.properties
+#
+# Copyright (C) 2018 Universidad de Sevilla
+# 
+# The use of this project is hereby constrained to the conditions of the 
+# TDG Licence, a copy of which you may download from 
+# http://www.tdg-seville.info/License.html
+
+handyworker.action.1	= This is the handyworker's action 1
+handyworker.action.2	= This is the handyworker's action 2
+
+handyworker.edit.save				= Save
+handyworker.edit.cancel				= Cancel
+handyworker.edit.confirm.delete		= Are you sure about deleting this account?
+handyworker.edit.delete				= Delete
+handyworker.commit.error			= Cannot commit the operation
+
+handyworker.edit.contact			= Contact information
+handyworker.edit.userAccount		= Account information
+
+handyworker.edit.label.name			= Name
+handyworker.edit.label.surname		= Surname
+handyworker.edit.label.middleName 	= Middle name
+handyworker.edit.label.email		= Email
+handyworker.edit.label.address		= Address
+handyworker.edit.label.phoneNumber	= Phone number
+handyworker.edit.label.photoURL		= Photo URL 
+handyworker.edit.label.username		= Username
+handyworker.edit.label.password		= Password
+
+handyworker.edit.save				= Register
+handyworker.edit.save.save			= Save
+handyworker.edit.cancel				= Cancel
