@@ -126,6 +126,13 @@ public class HandyWorkerService {
 		Assert.notNull(logHandyWorker.getId());
 
 		HandyWorker res;
+		String make;
+
+		if (handyWorker.getMake() == null || handyWorker.getMake().equals("")) {
+			make = handyWorker.getName() + " " + handyWorker.getSurname();
+			handyWorker.setMake(make);
+		}
+
 		res = this.handyWorkerRepository.save(handyWorker);
 		return res;
 	}
@@ -209,6 +216,12 @@ public class HandyWorkerService {
 	public HandyWorker saveForTest(final HandyWorker hw) {
 
 		Assert.isTrue(hw.getBan() != true);
+		String make = "";
+
+		if (hw.getMake().equals("")) {
+			make = hw.getName() + " " + hw.getSurname();
+			hw.setMake(make);
+		}
 
 		if (hw.getId() == 0) {
 			final Md5PasswordEncoder encoder = new Md5PasswordEncoder();

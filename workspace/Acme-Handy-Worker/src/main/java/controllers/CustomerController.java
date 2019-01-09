@@ -137,7 +137,7 @@ public class CustomerController extends AbstractController {
 		else
 			try {
 				this.customerService.saveForTest(customer);
-				result = new ModelAndView("redirect:welcome/index.do");
+				result = new ModelAndView("redirect:http://localhost:8080/Acme-Handy-Worker");
 			} catch (final Throwable error) {
 				result = this.createEditModelAndView(customer, "customer.comit.error");
 				System.out.println(error.getMessage());

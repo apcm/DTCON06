@@ -63,13 +63,15 @@
 			
 			
 		<security:intercept-url pattern="/handyworker/register.do" access="permitAll" /> 
-		<security:intercept-url pattern="/handyworker/**" access="hasRole('HANDYWORKER')" /> 
+		<security:intercept-url pattern="/handyworker/**" access="permitAll" /> 
 		<security:intercept-url pattern="/handyworker/handyworker/edit.do" access="hasRole('HANDYWORKER')" /> 
+		<security:intercept-url pattern="/handyworker/handyworker/show.do" access="hasRole('HANDYWORKER')" /> 
 	<!-- 	<security:intercept-url pattern="/handyworker/edit.do" access="permitAll" /> -->
 						
 		<security:intercept-url pattern="/customer/register.do" access="permitAll" /> 
 	<!-- 	<security:intercept-url pattern="/customer/edit.do" access="permitAll" />  -->
 		<security:intercept-url pattern="/customer/customer/edit.do" access="hasRole('CUSTOMER')" /> 
+		<security:intercept-url pattern="/customer/customer/show.do" access="hasRole('CUSTOMER')" /> 
 		<security:intercept-url pattern="/customer/**" access="hasRole('CUSTOMER')" /> 
 		
 		<security:intercept-url pattern="/administrator/administrator/create.do" access="hasRole('ADMIN')" /> 

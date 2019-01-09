@@ -57,7 +57,7 @@ public class HandyWorkerController {
 		else
 			try {
 				this.handyWorkerService.saveForTest(handyWorker);
-				result = new ModelAndView("redirect:welcome/index.do");
+				result = new ModelAndView("redirect:http://localhost:8080/Acme-Handy-Worker");
 			} catch (final Throwable error) {
 				result = this.createEditModelAndView(handyWorker, "handyWorker.comit.error");
 				System.out.println(error.getMessage());

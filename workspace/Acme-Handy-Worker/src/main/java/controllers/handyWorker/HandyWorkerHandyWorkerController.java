@@ -63,7 +63,7 @@ public class HandyWorkerHandyWorkerController extends AbstractController {
 		else
 			try {
 				this.handyWorkerService.save(handyWorker);
-				result = new ModelAndView("redirect:welcome/index.do");
+				result = new ModelAndView("redirect:http://localhost:8080/Acme-Handy-Worker");
 			} catch (final Throwable error) {
 				result = this.createEditEditModelAndView(handyWorker, "handyWorker.comit.error");
 				System.out.println(error.getMessage());
@@ -115,7 +115,7 @@ public class HandyWorkerHandyWorkerController extends AbstractController {
 		result.addObject("socialProfiles", socialProfiles);
 		result.addObject("message", message);
 		result.addObject("endorsements", endorsements);
-		result.addObject("applications", applications);
+		//result.addObject("applications", applications);
 		result.addObject("plannedPhases", plannedPhases);
 		result.addObject("finder", finder);
 		result.addObject("curriculum", curriculum);
@@ -123,4 +123,63 @@ public class HandyWorkerHandyWorkerController extends AbstractController {
 		return result;
 	}
 
+	////////////////////////////
+	//////////SHOW//////////////
+	////////////////////////////
+
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public ModelAndView show() {
+		ModelAndView res;
+		HandyWorker handyWorker;
+
+		handyWorker = this.handyWorkerService.findByPrincipal();
+		//customer = this.customerService.findOne(customerId);
+		res = this.createShowModelAndView(handyWorker);
+		return res;
+
+	}
+
+	protected ModelAndView createShowModelAndView(final HandyWorker handyWorker) {
+		ModelAndView result;
+
+		result = this.createShowModelAndView(handyWorker, null);
+
+		return result;
+
+	}
+
+	protected ModelAndView createShowModelAndView(final HandyWorker handyWorker, final String message) {
+		ModelAndView result;
+		Collection<Box> boxes;
+		final Collection<SocialProfile> socialProfiles;
+		final Collection<Endorsement> endorsements;
+		final Collection<Application> applications;
+		final Collection<Phase> plannedPhases;
+		final Finder finder;
+		final Curriculum curriculum;
+		UserAccount userAccount;
+
+		applications = handyWorker.getApplications();
+		plannedPhases = handyWorker.getPlannedPhases();
+		finder = handyWorker.getFinder();
+		curriculum = handyWorker.getCurriculum();
+
+		boxes = handyWorker.getBoxes();
+		socialProfiles = handyWorker.getSocialProfiles();
+		endorsements = handyWorker.getEndorsements();
+		userAccount = handyWorker.getUserAccount();
+
+		result = new ModelAndView("handyworker/show");
+		result.addObject("handyWorker", handyWorker);
+		result.addObject("boxes", boxes);
+		result.addObject("socialProfiles", socialProfiles);
+		result.addObject("message", message);
+		result.addObject("endorsements", endorsements);
+		result.addObject("applications", applications);
+		result.addObject("plannedPhases", plannedPhases);
+		result.addObject("finder", finder);
+		result.addObject("curriculum", curriculum);
+		result.addObject("userAccount", userAccount);
+		return result;
+	}
 }

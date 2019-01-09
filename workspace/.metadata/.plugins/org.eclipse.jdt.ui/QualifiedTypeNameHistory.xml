@@ -50,7 +50,6 @@
 <fullyQualifiedTypeName name="domain.Box"/>
 <fullyQualifiedTypeName name="org.joda.time.DateTime"/>
 <fullyQualifiedTypeName name="java.util.Locale.Category"/>
-<fullyQualifiedTypeName name="domain.Category"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="domain.Section"/>
 <fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="domain.Category"/>
 </qualifiedTypeNameHistroy>

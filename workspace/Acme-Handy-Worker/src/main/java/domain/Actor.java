@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
@@ -39,7 +38,6 @@ public abstract class Actor extends DomainEntity {
 		this.name = name;
 	}
 
-	@Email
 	public String getEmail() {
 		return this.email;
 	}
@@ -47,7 +45,6 @@ public abstract class Actor extends DomainEntity {
 		this.email = email;
 	}
 
-	//@Pattern(regexp=Pattern.List{Pattern(^\+\d{1,3} \(\d{1,3}\) \d{4,}$), Pattern(^\+\d{1,3} \d{4,}$), Pattern(^\d{4,}$)})
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}

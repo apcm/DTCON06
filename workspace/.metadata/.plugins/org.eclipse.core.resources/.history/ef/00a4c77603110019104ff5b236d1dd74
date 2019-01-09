@@ -1,0 +1,125 @@
+
+package controllers.administrator;
+
+import java.util.Collection;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import security.UserAccount;
+import services.AdministratorService;
+import controllers.AbstractController;
+import domain.Application;
+import domain.Box;
+import domain.Curriculum;
+import domain.Endorsement;
+import domain.Finder;
+import domain.HandyWorker;
+import domain.Phase;
+import domain.SocialProfile;
+
+@Controller
+@RequestMapping("/administrator/administrator")
+public class AdministratorAdministratorController extends AbstractController {
+
+	@Autowired
+	AdministratorService	administratorService;
+
+
+	// Constructors -----------------------------------------------------------
+
+	public AdministratorAdministratorController() {
+		super();
+	}
+
+	////////////////////////////
+	//////////EDIT//////////////
+	////////////////////////////
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView editEdit() {
+		ModelAndView res;
+		final Administrator administrator;
+
+		administrator = this.administratorService.findByPrincipal();
+		//customer = this.customerService.findOne(customerId);
+		res = this.createEditEditModelAndView(administrator);
+		return res;
+
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final HandyWorker handyWorker, final BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditEditModelAndView(handyWorker);
+		else
+			try {
+				this.handyWorkerService.save(handyWorker);
+				result = new ModelAndView("redirect:welcome/index.do");
+			} catch (final Throwable error) {
+				result = this.createEditEditModelAndView(handyWorker, "handyWorker.comit.error");
+				System.out.println(error.getMessage());
+			}
+
+		return result;
+
+	}
+
+	protected ModelAndView createEditEditModelAndView(final HandyWorker handyWorker) {
+		ModelAndView result;
+
+		result = this.createEditEditModelAndView(handyWorker, null);
+
+		return result;
+
+	}
+
+	protected ModelAndView createEditEditModelAndView(final HandyWorker handyWorker, final String message) {
+		ModelAndView result;
+		Collection<Box> boxes;
+		final Collection<SocialProfile> socialProfiles;
+		final Collection<Endorsement> endorsements;
+		final Collection<Application> applications;
+		final Collection<Phase> plannedPhases;
+		final Finder finder;
+		final Curriculum curriculum;
+		UserAccount userAccount;
+
+		applications = handyWorker.getApplications();
+		plannedPhases = handyWorker.getPlannedPhases();
+		finder = handyWorker.getFinder();
+		curriculum = handyWorker.getCurriculum();
+
+		boxes = handyWorker.getBoxes();
+		socialProfiles = handyWorker.getSocialProfiles();
+		endorsements = handyWorker.getEndorsements();
+		userAccount = handyWorker.getUserAccount();
+		//		 if (socialProfiles.isEmpty())
+		//		 * socialProfiles = null;
+		//		 * if (endorsements.isEmpty())
+		//		 * endorsements = null;
+		//if (boxes.isEmpty())
+		//	boxes = null;
+
+		result = new ModelAndView("handyworker/edit");
+		result.addObject("handyWorker", handyWorker);
+		result.addObject("boxes", boxes);
+		result.addObject("socialProfiles", socialProfiles);
+		result.addObject("message", message);
+		result.addObject("endorsements", endorsements);
+		result.addObject("applications", applications);
+		result.addObject("plannedPhases", plannedPhases);
+		result.addObject("finder", finder);
+		result.addObject("curriculum", curriculum);
+		result.addObject("userAccount", userAccount);
+		return result;
+	}
+}

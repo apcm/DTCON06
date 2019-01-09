@@ -1,0 +1,53 @@
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+
+<security:authorize access="hasRole('CUSTOMER')">
+	
+	<h4>
+		<spring:message code="customer.edit.label.name" />:
+	</h4>
+	<jstl:out value="${customer.name}"></jstl:out>
+	
+	<h4>
+		<spring:message code="customer.edit.label.middleName" />:
+	</h4>
+	<jstl:out value="${customer.middleName}"></jstl:out>
+
+	<h4>
+		<spring:message code="customer.edit.label.surname" />:
+	</h4>
+	<jstl:out value="${customer.surname}"></jstl:out>
+	
+	<h4>
+		<spring:message code="customer.edit.label.address" />:
+	</h4>
+	<jstl:out value="${customer.address}"></jstl:out>
+	
+	<h4>
+		<spring:message code="customer.edit.label.email" />:
+	</h4>
+	<jstl:out value="${customer.email}"></jstl:out>
+	
+	<h4>
+		<spring:message code="customer.edit.label.phoneNumber" />:
+	</h4>
+	<jstl:out value="${customer.phoneNumber}"></jstl:out>
+
+	<h4>
+		<spring:message code="customer.edit.label.username" />:
+	</h4>
+	<jstl:out value="${customer.userAccount.username}"></jstl:out>
+</br>
+
+	<input type="button" name="back" onclick="javascript: window.location.replace('welcome/index.do')"
+		value="<spring:message code="customer.back" />" />
+	
+</security:authorize>
