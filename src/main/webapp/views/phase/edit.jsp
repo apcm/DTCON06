@@ -27,6 +27,7 @@
 		<form:errors cssClass="error" path="fixUpTask" />
 		<br/>
 	</jstl:if>
+
 	
 		<form:label path="title">
 			<spring:message code="phase.title" />:

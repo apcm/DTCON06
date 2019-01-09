@@ -107,6 +107,7 @@ public class PhaseService {
 		}
 		return res;
 	}
+
 	public void delete(final Phase phase) {
 		Assert.notNull(phase);
 

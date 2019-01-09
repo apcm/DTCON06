@@ -39,8 +39,14 @@
 					<li><a href="customer/customer/edit.do"><spring:message code="master.page.customer.edit" /></a></li>
 					<li><a href="box/list.do"><spring:message code="master.page.boxes" /></a></li>					
 					<li><a href="customer/show.do"><spring:message code="master.page.customer.show" /></a></li>					
+
 					<li><a href="fixUpTask/customer/list.do"><spring:message code="master.page.fixuptasks" /></a></li>					
 					<li><a href="application/customer/list.do"><spring:message code="master.page.applications" /></a></li>					
+
+<!--
+					<li><a href="fixuptask/list.do"><spring:message code="master.page.fixuptasks" /></a></li>					
+					<li><a href="application/list.do"><spring:message code="master.page.applications" /></a></li>	-->				
+
 					<li><a href="complaint/list.do"><spring:message code="master.page.complaints" /></a></li>					
 					<li><a href="endorsement/list.do"><spring:message code="master.page.endorsements" /></a></li>					
 				</ul>
@@ -53,10 +59,16 @@
 					<li class="arrow"></li>
 					<li><a href="handyworker/handyworker/edit.do"><spring:message code="master.page.handyworker.edit" /></a></li>
 					<li><a href="box/list.do"><spring:message code="master.page.boxes" /></a></li>					
+
 					<li><a href="handyworker/show.do"><spring:message code="master.page.handyworker.show" /></a></li>	
 					<li><a href="fixUpTask/handyWorker/list.do"><spring:message code="master.page.catalogue"/></a></li>				
 					<li><a href="phase/handyworker/list.do"><spring:message code="master.page.phases" /></a></li>					
 					<li><a href="application/handyWorker/list.do"><spring:message code="master.page.applications" /></a></li>					
+<!--
+					<li><a href="handyworker/show.do"><spring:message code="master.page.handyworker.show" /></a></li>					
+					<li><a href="phase/list.do"><spring:message code="master.page.phases" /></a></li>					
+					<li><a href="application/list.do"><spring:message code="master.page.applications" /></a></li>	-->				
+
 					<li><a href="finder/handyworker/show.do"><spring:message code="master.page.finder" /></a></li>					
 					<li><a href="complaint/list.do"><spring:message code="master.page.complaints" /></a></li>					
 				</ul>

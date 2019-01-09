@@ -32,7 +32,12 @@ public class CustomerService {
 	private CustomerRepository	customerRepository;
 
 	// Services
+
+	@Autowired
 	public AdministratorService	administratorService;
+
+	@Autowired
+	public BoxService			boxService;
 
 
 	// Constructor
@@ -244,19 +249,21 @@ public class CustomerService {
 			final UserAccount cuenta = cus.getUserAccount();
 			cuenta.setPassword(hash);
 			cus.setUserAccount(cuenta);
+
+			//			final Box in1 = new Box();
+			//			in1.setName("In");
+			//			in1.setPredefined(true);
+			//			final Box in = this.boxService.save(in1);
+			//
+			//			final Collection<Box> boxesPredefined = new ArrayList<Box>();
+			//			boxesPredefined.add(in);
+			//			cus.setBoxes(boxesPredefined);
 		}
 
 		return this.customerRepository.save(cus);
 	}
 
 	public Customer findOne(final int customerId) {
-		Customer c;
-
-		Assert.notNull(customerId);
-		Assert.isTrue(customerId != 0);
-		c = this.customerRepository.findOne(customerId);
-
-		Assert.notNull(c);
-		return c;
+		return this.customerRepository.findOne(customerId);
 	}
 }

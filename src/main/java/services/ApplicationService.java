@@ -55,7 +55,6 @@ public class ApplicationService {
 		a.setAuthority(Authority.HANDYWORKER);
 		Assert.isTrue(user.getAuthorities().contains(a));
 
-		System.out.println("1");
 		final FixUpTask fixUpTask = new FixUpTask();
 
 		final Application res = new Application();
@@ -276,4 +275,5 @@ public class ApplicationService {
 
 		return res;
 	}
+
 }

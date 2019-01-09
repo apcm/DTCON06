@@ -13,6 +13,7 @@
 <security:authorize access="hasRole('CUSTOMER')|| hasRole('HANDYWORKER')">
 <form:form action="application/handyWorker/edit.do" modelAttribute="application">
 
+
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	<form:hidden path="moment" />
@@ -22,7 +23,6 @@
 	<form:hidden path="rejectedCause" />
 	<form:hidden path="creditCard" />
 	<form:hidden path="status"/>
-	
 
 	<!-- Parámetros -->
 
@@ -49,8 +49,6 @@
 	<form:input path="offeredPrice.amount" />
 	<form:errors cssClass="error" path="offeredPrice" />-->
 	<br />
-	
-	
 	
 	<security:authorize access="hasRole('CUSTOMER')">
 	
@@ -157,6 +155,14 @@
 	<input type="button" name="cancel"
 		value="<spring:message code="application.cancel" />"
 		onclick="javascript: relativeRedir('fixUpTask/handyWorker/list.do');" />
+<!--
+		value="<spring:message code="warranty.save" />" />&nbsp; 
+		
+	
+	<input type="button" name="cancel"
+		value="<spring:message code="warranty.cancel" />"
+		onclick="javascript: relativeRedir('warranty/administrator/list.do');" />
+	-->
 	<br />
 
 

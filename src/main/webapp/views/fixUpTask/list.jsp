@@ -11,6 +11,8 @@
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="fixUpTasks" requestURI="${requestURI}" id="row">
+	<!--name="fixuptasks" requestURI="${requestURI}" id="row">-->
+
 <!-- Attributes -->
 <spring:message code="fixUpTask.list.ticker" var="tickerHeader"/>
 <display:column property="ticker" title="${tickerHeader}"/>
@@ -22,7 +24,9 @@
 <display:column property="description" title="${descriptionHeader}"/>
 
 <spring:message code="fixUpTask.list.category" var="categoryHeader"/>
-<display:column property="category.name" title="${categoryHeader}"/>
+<!--<display:column property="category.name" title="${categoryHeader}"/>-->
+<display:column property="category" title="${categoryHeader}"/>
+
 
 <!-- Action Links -->
 
