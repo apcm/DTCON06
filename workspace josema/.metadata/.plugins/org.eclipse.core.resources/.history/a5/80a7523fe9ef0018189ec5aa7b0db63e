@@ -1,6 +1,0 @@
-package repositories;
-
-@Repository
-public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
-
-}

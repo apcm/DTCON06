@@ -1,7 +1,0 @@
-package controllers;
-
-@Controller
-@RequestMapping("/warranty/admin")
-public class WarrantyController {
-
-}
