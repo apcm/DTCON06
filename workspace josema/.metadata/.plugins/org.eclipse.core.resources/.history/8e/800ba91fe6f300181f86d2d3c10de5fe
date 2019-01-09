@@ -1,0 +1,20 @@
+
+package repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import utilities.b;
+import utilities.messages;
+import utilities.select;
+
+import domain.Box;
+
+@Repository
+public interface BoxRepository extends JpaRepository<Box, Integer> {
+
+	@Query("select distinct b from Box b join b.messages s where b.name='in' and s.sender.id=2;")
+	Box findBoxByNameAndActor(String name, int actorId);
+
+}

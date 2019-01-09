@@ -1,0 +1,30 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import repositories.FixUpTaskRepository;
+import domain.FixUpTask;
+
+@Service
+@Transactional
+public class FixUpTaskService {
+
+	//Repositories
+	@Autowired
+	public FixUpTaskRepository	fixUpTaskRepository;
+
+	//Services
+	@Autowired
+	public CustomerService		customerServices;
+
+
+	//Methods
+	public Collection<FixUpTask> findAll() {
+
+		final Collection<FixUpTask> res = this.fixUpTaskRepository.findAll();
+		return res;
+	}
+}

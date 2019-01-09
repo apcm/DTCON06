@@ -1,0 +1,23 @@
+
+package domain;
+
+import java.util.Date;
+
+public class MainPruebas {
+
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+		final Message m = new Message();
+		final Date moment = new Date(2018, 2, 10);
+		m.setMoment(moment);
+		m.setBody("Nice Work Dude!");
+		m.setPriority("LOW");
+		m.setFlagSpam(false);
+		m.setSubject("My fixup task");
+		m.setTag("door");
+		m.setId(0);
+	}
+
+}

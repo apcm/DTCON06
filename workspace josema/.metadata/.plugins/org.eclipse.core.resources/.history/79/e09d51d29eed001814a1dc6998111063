@@ -1,0 +1,45 @@
+
+package services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.CustomerRepository;
+import domain.Customer;
+
+@Service
+@Transactional
+public class CustomerService {
+
+	//Repository
+	@Autowired
+	private CustomerRepository	customerRepository;
+
+	//Services
+	@Autowired
+	private CustomerService		customerService;
+
+
+	//Constructor
+	public CustomerService() {
+		super();
+	}
+
+	//Simple CRUD
+
+	public Customer create() {
+		Customer result;
+
+		result = new Customer();
+
+		return result;
+	}
+
+	public Customer save(final Customer customer) {
+		Assert.notNull(customer);
+
+	}
+
+}

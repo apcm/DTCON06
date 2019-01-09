@@ -1,0 +1,10 @@
+box.list			=	Mailboxes list
+box.name			=	Box name
+box.select			= 	Select
+box.create			=	Create box	
+box.show			= 	Box detail
+message.moment		=	
+message.subject		=
+message.body		=
+message.sender		=
+message.recipient	=

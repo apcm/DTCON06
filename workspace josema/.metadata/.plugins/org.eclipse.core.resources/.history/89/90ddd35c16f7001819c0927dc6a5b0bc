@@ -1,0 +1,33 @@
+# messages.properties
+#
+# Copyright (C) 2018 Universidad de Sevilla
+# 
+# The use of this project is hereby constrained to the conditions of the 
+# TDG Licence, a copy of which you may download from 
+# http://www.tdg-seville.info/License.html
+
+customer.action.1	= This is the customer's action 1
+customer.action.2	= This is the customer's action 2
+
+customer.edit.save				= Save
+customer.edit.cancel			= Cancel
+customer.edit.confirm.delete	= Are you sure about deleting this social identity?
+customer.edit.delete			= Delete
+customer.commit.error			= Cannot commit the operation
+
+customer.edit.contact			= Contact information
+customer.edit.userAccount		= Account information
+
+customer.edit.label.name		= Name
+customer.edit.label.surname		= Surname
+customer.edit.label.middleName 	= Middle name
+customer.edit.label.email		= Email
+customer.edit.label.address		= Address
+customer.edit.label.phoneNumber	= Phone number
+customer.edit.label.photoURL	= Photo URL 
+customer.edit.label.username	= Username
+customer.edit.label.password	= Password
+
+customer.edit.save				= Register
+customer.edit.save.save			= Save
+customer.edit.cancel			= Cancel

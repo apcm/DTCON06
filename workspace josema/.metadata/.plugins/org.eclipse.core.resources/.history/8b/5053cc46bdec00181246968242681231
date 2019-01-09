@@ -1,0 +1,9 @@
+package services;
+
+@Service
+@Transactional
+public class FixUpTaskService {
+	
+	
+	
+}

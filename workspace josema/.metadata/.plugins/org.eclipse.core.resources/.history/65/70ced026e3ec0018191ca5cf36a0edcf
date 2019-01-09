@@ -1,0 +1,17 @@
+
+package repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import domain.Application;
+
+@Repository
+public interface ApplicationRepository extends JpaRepository<Application, Integer> {
+
+	//Query 10.2
+	//Tenemos que sacar las fixuptasks de las aplicaciones de un customer
+	//@Query("select f.applications from FixUpTask f where f.customer.id=?1")
+	@Query("select f.applications from Customer c join c.fixUpTasks f")
+	Collection<Application>
+}

@@ -1,0 +1,42 @@
+
+package domain;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class Authority extends DomainEntity {
+
+	private String	Admin="ADMIN";
+	private String	Customer="CUSTOMER";
+	private String	Reviewer="REVIEWER";
+	
+	public String getAdmin() {
+		return Admin;
+	}
+	
+	public void setAdmin(String admin) {
+		Admin = admin;
+	}
+	
+	public String getCustomer() {
+		return Customer;
+	}
+	
+	public void setCustomer(String customer) {
+		Customer = customer;
+	}
+	
+	public String getReviewer() {
+		return Reviewer;
+	}
+	
+	public void setReviewer(String reviewer) {
+		Reviewer = reviewer;
+	}
+
+	
+	
+}

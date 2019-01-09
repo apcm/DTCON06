@@ -1,0 +1,20 @@
+
+package services;
+
+@Service
+@Transactional
+public class PhaseService {
+
+	//Repository
+	@Autowired
+	public PhaseRepository	phaseRepository;
+
+
+	//Services
+
+	//Constructor
+	public PhaseService() {
+		super();
+	}
+
+}
